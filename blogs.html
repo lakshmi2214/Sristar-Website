@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs - Sristar Gold Company</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f5f4f3;
+        }
+
+        /* Top Header */
+        .top-header {
+            width: 100%;
+            background-color: #000;
+            color: #f0f1e9;
+            padding: 8px 20px;
+        }
+
+        .top-header .address {
+            font-size: 14px;
+        }
+
+        .social-icons a {
+            color: white;
+            background-color: #000;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: background 0.3s;
+            margin: 0 5px;
+        }
+
+        .social-icons a:hover {
+            background-color: #444;
+        }
+
+        
+/* Navigation */
+.navbar {
+  background-color: white !important;
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+}
+
+ .navbar-nav .nav-link {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-left: 15px;
+      white-space: nowrap;
+    }
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 100px;
+}
+
+.navbar-brand img {
+  height: 45px;
+  width: auto;
+}
+
+.company-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+}
+
+.navbar-nav .nav-link {
+  color: #000 !important;
+  font-weight: 600;
+  padding: 8px 16px !important;
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #d4af37 !important;
+}
+
+.navbar .btn-warning {
+  font-weight: 600;
+  border-radius: 6px;
+  color: #000;
+}
+
+.navbar .btn-warning:hover {
+  background-color: #004d40;
+  color: #fff;
+}
+
+         /* Page Header */
+.page-header {
+  background: linear-gradient(135deg, #00754a, #004d32);
+  color: white;
+  padding: 100px 0 60px;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.breadcrumb-custom {
+  font-size: 16px;
+}
+
+.breadcrumb-custom a {
+  color: #ffd700;
+  text-decoration: none;
+}
+
+.breadcrumb-custom span {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+
+        /* Blog Card Styling */
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8fafc; /* Light gray background */
+}
+
+/* Blog Section Styling */
+.blog-section {
+    padding: 80px 0;
+    background-color: #f8fafc;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h4 {
+    color: #10b981; /* Matches the span color for consistency */
+    font-size: 1rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.section-header h2 span {
+    color: #10b981;
+}
+
+/* Blog Card Container - makes it position relative for author-info */
+.blog-card {
+    position: relative;
+    height: 100%; /* Important for equal height columns in a Bootstrap row with d-flex */
+    display: flex; /* Make it a flex container to align its direct children (blog-content, author-info) */
+    flex-direction: column; /* Stack children vertically */
+}
+
+/* The actual visual card content */
+.blog-content {
+    border-radius: 0.75rem; /* rounded-2xl equivalent */
+    border: 1px solid #e2e8f0; /* border-zinc-100 equivalent */
+    background-color: white;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    height: 100%; /* Ensure content fills the blog-card height */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Hover effect on the visual card content */
+.blog-card:hover .blog-content {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+}
+
+/* Consistent thumbnail container for aspect ratio */
+.thumbnail-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem 0.5rem 0 0; /* Rounded top corners only */
+    background-color: #f3f4f6; /* bg-gray-100 */
+}
+
+.thumbnail-container::before {
+    content: '';
+    display: block;
+    padding-top: calc(10 / 16 * 100%); /* aspect-[16/10] */
+}
+
+.thumbnail-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+    border-radius: inherit; /* Inherit initial rounded corners */
+}
+
+/* Image scaling and rounding on hover */
+.blog-card:hover .thumbnail-container img {
+    transform: scale(0.95);
+    border-radius: 0.75rem; /* rounded-2xl for the image */
+}
+
+/* Card Body Styling */
+.blog-content .card-body {
+    padding: 1.5rem; /* p-4 equivalent */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allow body to grow and fill space */
+}
+
+.blog-content h5 {
+    font-size: 1.25rem; /* text-lg */
+    font-weight: 700; /* font-bold */
+    color: #333; /* text-zinc-700 */
+    margin-bottom: 0.75rem;
+}
+
+.blog-description {
+    font-size: 0.875rem; /* text-sm */
+    font-weight: normal;
+    color: #71717a; /* text-zinc-500 */
+    margin-bottom: 1rem;
+}
+
+.blog-meta {
+    display: flex;
+    flex-wrap: wrap; /* Allow meta items to wrap on smaller screens */
+    gap: 15px;
+    font-size: 0.875rem;
+    color: #6b7280; /* text-gray-500 */
+    margin-bottom: 1rem; /* Pushed to bottom by mt-auto */
+}
+
+.read-more-link {
+    display: inline-flex;
+    align-items: center;
+    color: #10b981; /* Green color for the link */
+    font-weight: 600;
+    text-decoration: none;
+    /* margin-top: auto is applied via Bootstrap's mt-auto on blog-meta div */
+}
+
+.read-more-link:hover {
+    color: #0b9e6f; /* Slightly darker green on hover */
+    text-decoration: underline;
+}
+
+.read-more-link i {
+    margin-left: 8px;
+    transition: margin-left 0.2s ease-in-out;
+}
+
+.read-more-link:hover i {
+    margin-left: 12px;
+}
+
+/* Styles for the "follower pointer" author info */
+.author-info {
+    display: none; /* Hidden by default, would be shown via JS for the follower effect */
+    position: absolute;
+    top: -40px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    z-index: 10;
+    align-items: center;
+    gap: 8px; /* space-x-2 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    pointer-events: none; /* Allows mouse events to pass through to the card below */
+}
+
+.author-info .author-avatar {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    border-radius: 50%; /* rounded-full */
+    border: 2px solid white;
+}
+
+.author-info .author-name {
+    font-size: 0.875rem;
+}
+
+/* Specific styling for text colors and font sizes to match from original demo */
+.text-dark-emphasis {
+    color: #333; /* More specific than Bootstrap's default dark */
+}
+
+.text-secondary {
+    color: #6c757d !important; /* Ensure it overrides if needed */
+}
+
+.bg-black { /* For the Read More button */
+    background-color: black !important;
+}
+
+.bg-black:hover {
+    background-color: #333 !important;
+}
+
+.text-white { /* For the Read More button text */
+    color: white !important;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #212529;
+}
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #e0a800;
+    color: #212529;
+}
+
+/* FAQ Section */
+    .faq-section {
+      padding: 80px 0;
+      background-color: #fffbe6;
+    }
+        .cta-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .cta-section .text-green {
+            color: #00754a;
+        }
+
+        .cta-button {
+            background-color: #ffd700;
+            color: #000;
+            font-weight: 700;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: #ffc107;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+            color: #000;
+        }
+
+        .cta-button i {
+            margin-right: 10px;
+        }
+
+        .newsletter-section {
+            background-color: #ffd700;
+            padding: 60px 0;
+        }
+
+        .newsletter-section h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 30px;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form .input-group {
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .newsletter-form input {
+            border: none;
+            padding: 15px 20px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form input:focus {
+            box-shadow: none;
+            border: none;
+        }
+
+        .newsletter-form button {
+            background-color: #00754a;
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #004d32;
+        }
+
+        /* Footer */
+        .footer {
+          background-color: #1c2331;
+          color: #fff;
+          padding-top: 40px;
+        }
+
+        .footer .social-section {
+          background-color: #6351ce;
+          text-align: center;
+          padding: 20px;
+        }
+
+        .footer .social-section span {
+          margin-right: 15px;
+          font-weight: 500;
+        }
+
+        .footer .social-section a {
+          color: #fff;
+          margin: 0 10px;
+          text-decoration: none;
+          font-size: 18px;
+          transition: color 0.3s;
+        }
+
+        .footer .social-section a:hover {
+          color: #ffd700;
+        }
+
+        .footer-column h6 {
+          font-weight: bold;
+          margin-bottom: 20px;
+          text-transform: uppercase;
+          position: relative;
+        }
+
+        .footer-column h6::after {
+          content: "";
+          display: block;
+          width: 40px;
+          height: 2px;
+          background: #6351ce;
+          margin-top: 6px;
+        }
+
+        .footer-column p,
+        .footer-column a {
+          color: #ccc;
+          font-size: 14px;
+          text-decoration: none;
+          line-height: 1.6;
+        }
+
+        .footer-column a:hover {
+          color: #ffd700;
+        }
+
+        .footer-column i {
+          margin-right: 10px;
+          color: #ffd700;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Header with Address and Social Icons -->
+    <div class="top-header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="address">
+                        #280/1, Anniamma Arcade, 2nd Floor, Sampige Road, Malleshwaram, Bangalore - 560003
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="social-icons d-flex justify-content-end">
+                        <a href="https://www.facebook.com/sristargold/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://in.linkedin.com/company/sristargold" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/sristargold?igsh=MWl1aGVoeTR0ZHA5cw==" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/embed/pDc-zHBSuNA?si=MS3-SBNVAcRVb9dp" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/images/logo.jpg" alt="Sristar Gold Logo">
+        <span class="company-name">SRISTAR GOLD</span>
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="branches.html">Branches</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gold calculator.html">Gold Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="album.html">Album</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="blogs.html">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>BLOGS</h1>
+      <div class="breadcrumb-custom">
+        <a href="index.html"></a>
+      </div>
+    </div>
+  </section>
+
+    <!-- Blog Section -->
+     
+   <section class="blog-section">
+        <div class="container">
+            <div class="section-header">
+                <h4>— BLOGS</h4>
+                <h2>Our Latest <span style="color: #10b981;">Blog</span></h2>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-4 col-md-6 d-flex">
+                    <div class="blog-card">
+                        <div class="blog-content shadow-sm rounded-4 border-0 overflow-hidden">
+                            <div class="thumbnail-container">
+                                <img src="assets/images/save money.jpg" alt="Sell and Save Gold Scheme">
+                            </div>
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold text-dark-emphasis">Sell and Save Gold Scheme: Get Cash & Secure Your Gold</h5>
+                                <p class="blog-description text-secondary">Learn how to create amazing Grid layouts with Tailwindcss grid and React. This is a longer description to show consistency in card height.</p>
+                                <div class="card-footer-content mt-auto d-flex justify-content-between align-items-center flex-wrap">
+                                    <div class="d-flex align-items-center flex-wrap gap-3">
+                                        <div class="blog-date-info">
+                                            <span>📅 6/2/2025</span>
+                                        </div>
+                                        <div class="author-info d-flex align-items-center gap-2">
+                                            <img src="assets/images/manu.png" alt="Author Avatar" class="author-avatar rounded-circle border border-white border-2">
+                                            <span class="author-name">Srikanth V</span>
+                                        </div>
+                                    </div>
+                                    <a href="blog1.html" class="read-more-link">
+                                        Read More <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 d-flex">
+                    <div class="blog-card">
+                        <div class="blog-content shadow-sm rounded-4 border-0 overflow-hidden">
+                            <div class="thumbnail-container">
+                                <img src="assets/images/top.jpg" alt="Bangalore Palace">
+                            </div>
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold text-dark-emphasis">From mines to memories - the journey of pure gold.</h5>
+                                <p class="blog-description text-secondary">Discover the essential guidelines and expert tips for selling your gold in Bangalore to maximize your returns and ensure a secure transaction.</p>
+                                <div class="card-footer-content mt-auto d-flex justify-content-between align-items-center flex-wrap">
+                                    <div class="d-flex align-items-center flex-wrap gap-3">
+                                        <div class="blog-date-info">
+                                            <span>📅 6/2/2025</span>
+                                        </div>
+                                        <div class="author-info d-flex align-items-center gap-2">
+                                            <img src="assets/images/manu.png" alt="Author Avatar" class="author-avatar rounded-circle border border-white border-2">
+                                            <span class="author-name">Srikanth V</span>
+                                        </div>
+                                    </div>
+                                    <a href="blog22.html" class="read-more-link">
+                                        Read More <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex">
+                    <div class="blog-card">
+                        <div class="blog-content shadow-sm rounded-4 border-0 overflow-hidden">
+                            <div class="thumbnail-container">
+                                <img src="assets/images/top.jpg" alt="Bangalore Palace">
+                            </div>
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold text-dark-emphasis">10 Golden Rules to Sell Gold in Bangalore for Top Cash</h5>
+                                <p class="blog-description text-secondary">Discover the essential guidelines and expert tips for selling your gold in Bangalore to maximize your returns and ensure a secure transaction.</p>
+                                <div class="card-footer-content mt-auto d-flex justify-content-between align-items-center flex-wrap">
+                                    <div class="d-flex align-items-center flex-wrap gap-3">
+                                        <div class="blog-date-info">
+                                            <span>📅 6/2/2025</span>
+                                        </div>
+                                        <div class="author-info d-flex align-items-center gap-2">
+                                            <img src="assets/images/manu.png" alt="Author Avatar" class="author-avatar rounded-circle border border-white border-2">
+                                            <span class="author-name">Srikanth V</span>
+                                        </div>
+                                    </div>
+                                    <a href="blog33.html" class="read-more-link">
+                                        Read More <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex">
+                    <div class="blog-card">
+                        <div class="blog-content shadow-sm rounded-4 border-0 overflow-hidden">
+                            <div class="thumbnail-container">
+                                <img src="assets/images/top.jpg" alt="Bangalore Palace">
+                            </div>
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold text-dark-emphasis">10 Golden Rules to Sell Gold in Bangalore for Top Cash</h5>
+                                <p class="blog-description text-secondary">Discover the essential guidelines and expert tips for selling your gold in Bangalore to maximize your returns and ensure a secure transaction.</p>
+                                <div class="card-footer-content mt-auto d-flex justify-content-between align-items-center flex-wrap">
+                                    <div class="d-flex align-items-center flex-wrap gap-3">
+                                        <div class="blog-date-info">
+                                            <span>📅 6/2/2025</span>
+                                        </div>
+                                        <div class="author-info d-flex align-items-center gap-2">
+                                            <img src="assets/images/manu.png" alt="Author Avatar" class="author-avatar rounded-circle border border-white border-2">
+                                            <span class="author-name">Mr Manjappa Bidaragaddi</span>
+                                        </div>
+                                    </div>
+                                    <a href="blog4.html" class="read-more-link">
+                                        Read More <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex">
+                    <div class="blog-card">
+                        <div class="blog-content shadow-sm rounded-4 border-0 overflow-hidden">
+                            <div class="thumbnail-container">
+                                <img src="assets/images/top.jpg" alt="Bangalore Palace">
+                            </div>
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold text-dark-emphasis">10 Golden Rules to Sell Gold in Bangalore for Top Cash</h5>
+                                <p class="blog-description text-secondary">Discover the essential guidelines and expert tips for selling your gold in Bangalore to maximize your returns and ensure a secure transaction.</p>
+                                <div class="card-footer-content mt-auto d-flex justify-content-between align-items-center flex-wrap">
+                                    <div class="d-flex align-items-center flex-wrap gap-3">
+                                        <div class="blog-date-info">
+                                            <span>📅 6/2/2025</span>
+                                        </div>
+                                        <div class="author-info d-flex align-items-center gap-2">
+                                            <img src="assets/images/manu.png" alt="Author Avatar" class="author-avatar rounded-circle border border-white border-2">
+                                            <span class="author-name">Mr Manjappa Bidaragaddi</span>
+                                        </div>
+                                    </div>
+                                    <a href="blog5.html" class="read-more-link">
+                                        Read More <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 d-flex">
+                    <div class="blog-card">
+                        <div class="blog-content shadow-sm rounded-4 border-0 overflow-hidden">
+                            <div class="thumbnail-container">
+                                <img src="https://placehold.co/600x400/E0E0E0/000000?text=Gold+Market+Trends" alt="Gold Market Trends">
+                            </div>
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold text-dark-emphasis">2025 Gold Market Trends: Is It the Right Time to Sell Gold?</h5>
+                                <p class="blog-description text-secondary">An in-depth analysis of the projected gold market trends for 2025, helping you decide whether it's an opportune time to sell your gold assets.</p>
+                                <div class="card-footer-content mt-auto d-flex justify-content-between align-items-center flex-wrap">
+                                    <div class="d-flex align-items-center flex-wrap gap-3">
+                                        <div class="blog-date-info">
+                                            <span>📅 2/21/2025</span>
+                                        </div>
+                                        <div class="author-info d-flex align-items-center gap-2">
+                                            <img src="assets/images/manu.png" alt="Author Avatar" class="author-avatar rounded-circle border border-white border-2">
+                                            <span class="author-name">Mr Manjappa Bidaragaddi</span>
+                                        </div>
+                                    </div>
+                                    <a href="blog6.html" class="read-more-link">
+                                        Read More <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Make the Most of <span class="text-green">Your Gold?</span></h2>
+            <p class="lead mb-4">Get Expert Assistance Today!</p>
+            <a href="contact.html" class="cta-button">
+                <i class="fas fa-phone"></i> Contact Us
+            </a>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section text-center">
+        <div class="container">
+            <h3>Get The Latest Information</h3>
+            <div class="newsletter-form">
+                <div class="input-group">
+                    <input type="email" class="form-control" placeholder="Enter your email address">
+                    <button class="btn" type="button">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="social-section">
+        <span>Get connected with us on social networks:</span>
+        <a href="https://www.facebook.com/sristargold/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://in.linkedin.com/company/sristargold" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/sristargold" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/embed/pDc-zHBSuNA" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+
+      <div class="container py-5">
+        <div class="row g-4">
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-column">
+              <h6>Company Name</h6>
+              <p>SRISTAR GOLD COMPANY</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-column">
+              <h6>Services</h6>
+              <p><a href="#">Gold Exchange</a></p>
+              <p><a href="#">Sell Gold</a></p>
+              <p><a href="#">Rent Gold</a></p>
+              <p><a href="#">Pledged Gold</a></p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-column">
+              <h6>Links</h6>
+              <p><a href="index.html">Home</a></p>
+              <p><a href="about.html">About</a></p>
+              <p><a href="services.html">Services</a></p>
+              <p><a href="branches.html">Branches</a></p>
+              <p><a href="contact.html">Contact</a></p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-column">
+              <h6>Contact</h6>
+              <p><i class="fas fa-home"></i>280/1, Anniamma Arcade, 2nd Floor,<br> Sampige Road, 18th Cross Rd, signal,<br> Malleshwaram, Bengaluru.</p>
+              <p><i class="fas fa-envelope"></i> sristargoldcompany@gmail.com</p>
+              <p><i class="fas fa-phone"></i>+91 63 66 333 444</p>
+              <p><i class="fas fa-print"></i>+91 63 66 333 444</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

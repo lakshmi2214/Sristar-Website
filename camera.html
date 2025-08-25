@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Try On Earrings</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: sans-serif;
+      background-color: #000;
+    }
+    #videoElement, #overlayCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+<video id="videoElement" autoplay muted playsinline></video>
+<canvas id="overlayCanvas"></canvas>
+
+<!-- clmtrackr face tracking -->
+<script src="https://cdn.jsdelivr.net/npm/clmtrackr@1.1.2/build/clmtrackr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clmtrackr@1.1.2/models/model_pca_20_svm.js"></script>
+
+<script>
+  const video = document.getElementById('videoElement');
+  const canvas = document.getElementById('overlayCanvas');
+  const context = canvas.getContext('2d');
+
+  const tracker = new clm.tracker();
+  tracker.init();
+
+  // Resize canvas to match video
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  // Start camera
+  navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
+    video.srcObject = stream;
+    tracker.start(video);
+    drawLoop();
+  });
+
+  // Load earring image
+  const earring = new Image();
+  earring.src = 'https://i.postimg.cc/Y2k8F72p/gold-earring.png'; // replace with your own PNG
+
+  function drawLoop() {
+    requestAnimationFrame(drawLoop);
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    const positions = tracker.getCurrentPosition();
+    if (positions) {
+      // Position near left ear (based on landmark points)
+      const leftEar = positions[1]; // Adjust based on testing
+      const earringWidth = 60;
+      const earringHeight = 100;
+      context.drawImage(
+        earring,
+        leftEar[0] - earringWidth / 2,
+        leftEar[1],
+        earringWidth,
+        earringHeight
+      );
+    }
+  }
+</script>
+
+</body>
+</html>

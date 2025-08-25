@@ -1,0 +1,2254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Jewellery Collection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        
+        
+        /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f4f3;
+    }
+
+    /* Top Header */
+    .top-header {
+      background-color: #000;
+      color: #f0f1e9;
+      padding: 8px 0;
+    }
+
+    .top-header .address {
+      font-size: 14px;
+    }
+
+    .social-icons a {
+      color: white;
+      background-color: #000;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: background 0.3s;
+      margin: 0 2px;
+    }
+
+    .social-icons a:hover {
+      background-color: #444;
+    }
+
+    /* Navigation */
+.navbar {
+  background-color: white !important;
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+}
+
+ .navbar-nav .nav-link {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-left: 15px;
+      white-space: nowrap;
+    }
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 100px;
+}
+
+.navbar-brand img {
+  height: 45px;
+  width: auto;
+}
+
+.company-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+}
+
+.navbar-nav .nav-link {
+  color: #000 !important;
+  font-weight: 600;
+  padding: 8px 16px !important;
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #d4af37 !important;
+}
+
+
+    /* Page Header */
+/* Page Header */
+.page-header {
+  background: linear-gradient(135deg, #00754a, #004d32);
+  color: white;
+  padding: 100px 0 60px;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.breadcrumb-custom {
+  font-size: 16px;
+}
+
+.breadcrumb-custom a {
+  color: #ffd700;
+  text-decoration: none;
+}
+
+.breadcrumb-custom span {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+
+    /* Album Content Styles */
+    .album-section {
+      padding: 60px 0;
+      background-color: #d4e9ff;
+   
+    }
+
+    .album-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .album-header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #000;
+      margin-bottom: 20px;
+    }
+
+    .album-header p {
+      font-size: 1.2rem;
+      color: #666;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: white;
+      padding: 20px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+
+    .gallery-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .gallery-description {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* album images */ 
+    body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fffaf5;
+}
+
+.section-title {
+    color: #b08d57;
+    font-weight: 600;
+    margin: 40px 0 20px;
+    text-align: center;
+}
+
+ .filter-btn {
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  padding: 10px 20px;
+  border: 2px solid #b08d57;
+  background: white;
+  color: #333;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Gold Shimmer Hover Effect */
+.filter-btn:hover {
+  color: white;
+  border-color: #ffd700;
+  background: linear-gradient(120deg, #ffd700, #ffcc00, #b08d57);
+  background-size: 200% 200%;
+  animation: shineGold 1s ease-in-out infinite;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+}
+
+/* Active Button with Gold Border Glow */
+.filter-btn.active {
+  background: linear-gradient(120deg, #ffd700, #ffcc00, #b08d57);
+  color: white;
+  border-color: #ffd700;
+  box-shadow: 0 0 15px 4px rgba(255, 215, 0, 0.7);
+  animation: shineGold 2s ease-in-out infinite;
+}
+
+/* Gold shine animation */
+@keyframes shineGold {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+
+.collection-card {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    backdrop-filter: blur(10px);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    opacity: 0;
+    transform: translateY(50px);
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.collection-card.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.collection-card:hover {
+    transform: translateY(-5px) scale(1.02) rotateX(2deg) rotateY(2deg);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.collection-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.collection-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: skewX(-20deg);
+    animation: shine 3s infinite;
+    z-index: 2;
+}
+
+@keyframes shine {
+    0% { left: -75%; }
+    20% { left: -75%; }
+    80% { left: 125%; }
+    100% { left: 125%; }
+}
+
+.collection-info {
+    padding: 5px 8px; /* smaller padding: top-bottom 5px, left-right 8px */
+    background-color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+}
+
+
+.filter-buttons .btn {
+    border-radius: 30px;
+    padding: 8px 18px;
+    margin: 5px;
+}
+
+.jewellery-section {
+    display: none;
+}
+
+.jewellery-section.active {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.testimonial-box {
+    background: #fff3e6;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 40px 0;
+}
+
+.floating-buttons {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 999;
+}
+
+.floating-buttons a {
+    background-color: #25d366;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.floating-buttons a.call {
+    background-color: #007bff;
+}
+
+.modal-body img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+
+        
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fffaf5;
+        }
+
+        .section-title {
+            color: #b08d57;
+            font-weight: 600;
+            margin: 40px 0 20px;
+            text-align: center;
+        }
+
+        .collection-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            transition: transform 0.6s ease, opacity 0.6s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            position: relative; /* Needed for shine effect */
+            transform-style: preserve-3d; /* For 3D tilt effect */
+            perspective: 1000px; /* For 3D tilt effect */
+        }
+
+        .collection-card.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .collection-card:hover {
+            transform: translateY(-5px) scale(1.02) rotateX(2deg) rotateY(2deg); /* Subtle 3D tilt and lift */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .collection-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Shine effect */
+        .collection-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -75%;
+            width: 50%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: skewX(-20deg);
+            animation: shine 3s infinite;
+            z-index: 2;
+        }
+
+        @keyframes shine {
+            0% {
+                left: -75%;
+            }
+            20% {
+                left: -75%; /* Pause before moving */
+            }
+            80% {
+                left: 125%;
+            }
+            100% {
+                left: 125%;
+            }
+        }
+
+        .collection-info {
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.85);
+            text-align: center;
+        }
+
+        .filter-buttons .btn {
+            border-radius: 30px;
+            padding: 8px 18px;
+            margin: 5px;
+        }
+
+        .jewellery-section {
+            display: none;
+        }
+
+        .jewellery-section.active {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .testimonial-box {
+            background: #fff3e6;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 40px 0;
+        }
+
+        .floating-buttons {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        .floating-buttons a {
+            background-color: #25d366;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .floating-buttons a.call {
+            background-color: #007bff;
+        }
+
+        /* Modal specific styles */
+        .modal-body img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+   body {
+      margin: 0;
+      background-color: #fffaf2;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Header Styling */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fffdf6;
+    }
+
+    /* Header */
+    .main-header {
+      background: linear-gradient(45deg, #f5e7c1, #fff3cd);
+      padding: 40px 0;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .main-header h2 {
+      font-size: 3rem;
+      color: #b08d57;
+      font-weight: 700;
+      text-shadow: 1px 1px #fff;
+    }
+
+    /* Section Styling */
+    .gold-collection-container {
+      background-image: url('assets/images/bg-gold.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 60px 20px;
+      border-radius: 25px;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+      border: 3px solid rgba(255, 215, 0, 0.3);
+      animation: glowBorder 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glowBorder {
+      from {
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+      }
+      to {
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+      }
+    }
+
+    h1.text-warning {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-shadow: 1px 1px #fff5d7;
+    }
+
+    p.fs-5 {
+      color: #444;
+      font-style: italic;
+    }
+
+
+    /* Breadcrumb */
+    .breadcrumb-custom {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .breadcrumb-custom a {
+      color: #00754a;
+      text-decoration: none;
+    }
+
+    .breadcrumb-custom span {
+      color: #d4af37;
+      font-weight: bold;
+    }
+        
+
+        /* Footer */
+    .footer {
+      background-color: #1c2331;
+      color: #fff;
+      padding-top: 40px;
+    }
+
+    .footer .social-section {
+      background-color: #6351ce;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .footer .social-section span {
+      margin-right: 15px;
+      font-weight: 500;
+    }
+
+    .footer .social-section a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+    .footer .social-section a:hover {
+      color: #ffd700;
+    }
+
+    .footer-column h6 {
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .footer-column h6::after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: #6351ce;
+      margin-top: 6px;
+    }
+
+    .footer-column p,
+    .footer-column a {
+      color: #ccc;
+      font-size: 14px;
+      text-decoration: none;
+      line-height: 1.6;
+    }
+
+    .footer-column a:hover {
+      color: #ffd700;
+    }
+
+    .footer-column i {
+      margin-right: 10px;
+      color: #ffd700;
+    }
+
+    /* Mobile Responsive Design */
+    @media (max-width: 768px) {
+      .top-header .address {
+        font-size: 12px;
+        text-align: center;
+      }
+
+      .company-name {
+        font-size: 18px;
+      }
+
+      .album-header h1 {
+        font-size: 2rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .album-header h1 {
+        font-size: 1.8rem;
+      }
+
+      .gallery-grid {
+        gap: 20px;
+      }
+    }
+
+    /* Animated Footer Social Icons */
+/* Animated Footer Social Icons */
+.footer .social-section a {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.footer .social-section a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent);
+  transition: left 0.6s ease;
+}
+
+.footer .social-section a:hover::before {
+  left: 100%;
+}
+
+.footer .social-section a:hover {
+  color: #ffd700;
+  transform: translateY(-3px) rotateY(15deg);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+}
+
+.footer .social-section a:nth-child(2n):hover {
+  transform: translateY(-3px) rotateY(-15deg);
+}
+
+.footer .social-section a i {
+  transition: all 0.3s ease;
+}
+
+.footer .social-section a:hover i {
+  transform: scale(1.2) rotateZ(360deg);
+}
+
+/* Pulse animation for social icons */
+@keyframes socialPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+  }
+}
+
+.footer .social-section a:hover {
+  animation: socialPulse 1.5s infinite;
+}
+
+/* Floating effect */
+@keyframes socialFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.footer .social-section a {
+  animation: socialFloat 3s ease-in-out infinite;
+}
+
+.footer .social-section a:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.footer .social-section a:nth-child(3) {
+  animation-delay: 1s;
+}
+.footer .social-section a:nth-child(4) {
+  animation-delay: 1.5s;
+}
+.footer .social-section a:nth-child(5) {
+  animation-delay: 2s;
+}
+
+.collection-card {
+  padding: 0 !important;
+  margin: 0;
+  background: transparent !important;
+  border: none;
+  box-shadow: none;
+}
+
+.collection-card img {
+  width: 100%;
+  height: 300px;      /* 🔹 set same height for all images */
+  object-fit: cover;  /* 🔹 crops images to fill the box neatly */
+  display: block;
+}
+
+.collection-info {
+  display: none !important; /* hides text + button */
+}
+
+
+    </style>
+</head>
+<body>
+
+     <!-- Top Header with Address and Social Icons -->
+  <div class="top-header">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-8 col-12 text-center text-md-start">
+          <div class="address">
+            #280/1, Anniamma Arcade, 2nd Floor, Sampige Road, Malleshwaram, Bangalore - 560003
+          </div>
+        </div>
+        <div class="col-md-4 col-12 text-center text-md-end mt-2 mt-md-0">
+          <div class="social-icons">
+            <a href="https://www.facebook.com/sristargold/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://in.linkedin.com/company/sristargold"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/sristargold"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/embed/pDc-zHBSuNA"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/images/logo.jpg" alt="Sristar Gold Logo">
+        <span class="company-name">SRISTAR GOLD</span>
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="branches.html">Branches</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gold calculator.html">Gold Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="album.html">Album</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+  
+<!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Album</h1>
+      <div class="breadcrumb-custom">
+      </div>
+    </div>
+  </section>
+
+    <div class="container py-5" style="background-image: url('assets/images/bg-gold.jpg'); background-size: cover;">
+  <h1 class="text-center text-warning mb-2">✨ Gold Jewellery Collection ✨</h1>
+  <p class="text-center fs-5 mb-4">Discover 💍 stunning gold, diamond & bridal sets crafted with ❤️ for every occasion!</p>
+
+  <div class="text-center filter-buttons mb-4">
+
+  </div>
+
+        <div class="text-center mb-5">
+            <button class="btn btn-warning px-4 py-2 fw-bold" onclick="document.getElementById('enquiry').scrollIntoView({behavior: 'smooth'})">
+                📩 Enquire Now
+            </button>
+        </div>
+
+        <div class="text-center filter-buttons mb-4">
+  <button class="btn btn-outline-dark filter-btn mx-1" onclick="showSection('all', this)">All</button>
+  <button class="btn btn-outline-dark filter-btn mx-1" onclick="showSection('necklaces', this)">Necklaces</button>
+  <button class="btn btn-outline-dark filter-btn mx-1" onclick="showSection('earrings', this)">Earrings</button>
+  <button class="btn btn-outline-dark filter-btn mx-1" onclick="showSection('bridal', this)">Bridal Sets</button>
+  <button class="btn btn-outline-dark filter-btn mx-1" onclick="showSection('rings', this)">Rings</button>
+  <button class="btn btn-outline-dark filter-btn mx-1" onclick="showSection('bangles', this)">Bangles</button>
+</div>
+
+
+        
+    <div id="all" class="jewellery-section row g-4 active">
+
+            <h3 class="section-title w-100">Top Collections</h3>
+            <div class="col-md-3">
+                <div class="collection-card">
+                    <img src="assets/images/antique1.jpg" alt="Necklace"/>
+                    <div class="collection-info">
+                        <h5>Antique Necklace</h5>
+                        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['about us.jpg.png', 'https://via.placeholder.com/400x300?text=Antique+Necklace+2', 'https://via.placeholder.com/400x300?text=Antique+Necklace+3']" data-title="Antique Necklace">View</button>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="col-md-3">
+                <div class="collection-card">
+                    <img src="assets/images/Earings.jpg" alt="Earrings"/>
+                    <div class="collection-info">
+                        <h5>Temple Earrings</h5>
+                        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['https://via.placeholder.com/400x300?text=Earrings+1', 'https://via.placeholder.com/400x300?text=Temple+Earrings+2', 'https://via.placeholder.com/400x300?text=Temple+Earrings+3']" data-title="Temple Earrings">View</button>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="col-md-3">
+                <div class="collection-card">
+                    <img src="assets/images/bridal set.jpg" alt="Bridal"/>
+                    <div class="collection-info">
+                        <h5>Bridal Set</h5>
+                        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['https://via.placeholder.com/400x300?text=Bridal+Set', 'https://via.placeholder.com/400x300?text=Bridal+Set+2', 'https://via.placeholder.com/400x300?text=Bridal+Set+3']" data-title="Bridal Set">View</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="collection-card">
+                    <img src="assets/images/diamond ring.jpg" alt="Ring"/>
+                    <div class="collection-info">
+                        <h5>Diamond Ring</h5>
+                        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['https://via.placeholder.com/400x300?text=Ring+1', 'https://via.placeholder.com/400x300?text=Diamond+Ring+2', 'https://via.placeholder.com/400x300?text=Diamond+Ring+3']" data-title="Diamond Ring">View</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<div id="necklaces" class="jewellery-section row g-4">
+    <h3 class="section-title w-100">Necklaces</h3>
+
+    <div class="col-md-4">
+        <a href="necklace1.html" class="text-decoration-none text-dark">
+            <div class="collection-card">
+                <img src="assets/images/Screenshot 2025-08-22 114520.png" alt="Necklace 1"/>
+                <div class="collection-info">
+                    <h5>Antique Necklace</h5><p>22k Gold</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['https://via.placeholder.com/400x300?text=Necklace+1', 'https://via.placeholder.com/400x300?text=Antique+Necklace+2', 'https://via.placeholder.com/400x300?text=Antique+Necklace+3']" data-title="Antique Necklace">View</button>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a href="necklace2.html" class="text-decoration-none text-dark">
+            <div class="collection-card">
+                <img src="assets/images/necklace23.jpg..png" alt="Necklace 1"/>
+                <div class="collection-info">
+                    <h5>Long  Necklace</h5><p>22k Gold</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['https://via.placeholder.com/400x300?text=Necklace+1', 'https://via.placeholder.com/400x300?text=Antique+Necklace+2', 'https://via.placeholder.com/400x300?text=Antique+Necklace+3']" data-title="Antique Necklace">View</button>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a href="necklace3.html" class="text-decoration-none text-dark">
+            <div class="collection-card">
+                <img src="assets/images/Screenshot 2025-08-22 124950-min.png" alt="Necklace 1"/>
+                <div class="collection-info">
+                    <h5>Gold Necklace</h5><p>18k Gold</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['https://via.placeholder.com/400x300?text=Necklace+1', 'https://via.placeholder.com/400x300?text=Antique+Necklace+2', 'https://via.placeholder.com/400x300?text=Antique+Necklace+3']" data-title="Antique Necklace">View</button>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a href="necklace4.html" class="text-decoration-none text-dark">
+            <div class="collection-card">
+                <img src="assets/images/Screenshot 2025-08-22 125359-min.png" alt="Necklace 1"/>
+                <div class="collection-info">
+                    <h5>Necklace</h5><p>24k Gold</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['https://via.placeholder.com/400x300?text=Necklace+1', 'https://via.placeholder.com/400x300?text=Antique+Necklace+2', 'https://via.placeholder.com/400x300?text=Antique+Necklace+3']" data-title="Antique Necklace">View</button>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a href="necklace5.html" class="text-decoration-none text-dark">
+            <div class="collection-card">
+                <img src="assets/images/Screenshot 2025-08-22 125210-min.png" alt="Necklace 1"/>
+                <div class="collection-info">
+                    <h5>Gold Haram</h5><p>22k Gold</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['https://via.placeholder.com/400x300?text=Necklace+1', 'https://via.placeholder.com/400x300?text=Antique+Necklace+2', 'https://via.placeholder.com/400x300?text=Antique+Necklace+3']" data-title="Antique Necklace">View</button>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+        <div id="earrings" class="jewellery-section row g-4">
+            <h3 class="section-title w-100">Earrings</h3>
+            <div class="col-md-4">
+    <div class="collection-card">
+        <a href="earings1.html">
+            <img src="assets/images/Screenshot 2025-08-22 131018-min.png" alt="Earrings 1"/>
+        </a>
+        <div class="collection-info">
+            <h5>Temple Earrings</h5><p>22k Gold</p>
+            <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['https://via.placeholder.com/400x300?text=Earrings+1', 'https://via.placeholder.com/400x300?text=Temple+Earrings+2', 'https://via.placeholder.com/400x300?text=Temple+Earrings+3']" data-title="Temple Earrings">View</button>
+        </div>
+    </div>
+</div>
+
+                       <div class="col-md-4">
+    <div class="collection-card">
+        <a href="earings2.html">
+            <img src="assets/images/Screenshot 2025-08-22 131301-min.png" alt="Earrings 1"/>
+        </a>
+        <div class="collection-info">
+            <h5>Temple Earrings</h5><p>22k Gold</p>
+            <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['https://via.placeholder.com/400x300?text=Earrings+1', 'https://via.placeholder.com/400x300?text=Temple+Earrings+2', 'https://via.placeholder.com/400x300?text=Temple+Earrings+3']" data-title="Temple Earrings">View</button>
+        </div>
+    </div>
+</div>
+                        <div class="col-md-4">
+    <div class="collection-card">
+        <a href="earings3.html">
+            <img src="assets/images/Screenshot 2025-08-22 132117-min.png" alt="Earrings 1"/>
+        </a>
+        <div class="collection-info">
+            <h5>Temple Earrings</h5><p>22k Gold</p>
+            <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['https://via.placeholder.com/400x300?text=Earrings+1', 'https://via.placeholder.com/400x300?text=Temple+Earrings+2', 'https://via.placeholder.com/400x300?text=Temple+Earrings+3']" data-title="Temple Earrings">View</button>
+        </div>
+    </div>
+</div>
+            <div class="col-md-4">
+    <div class="collection-card">
+        <a href="earings4.html">
+            <img src="assets/images/Screenshot 2025-08-22 132210-min.png" alt="Earrings 1"/>
+        </a>
+        <div class="collection-info">
+            <h5>Temple Earrings</h5><p>22k Gold</p>
+            <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['https://via.placeholder.com/400x300?text=Earrings+1', 'https://via.placeholder.com/400x300?text=Temple+Earrings+2', 'https://via.placeholder.com/400x300?text=Temple+Earrings+3']" data-title="Temple Earrings">View</button>
+        </div>
+    </div>
+</div>
+
+                  <div class="col-md-4">
+    <div class="collection-card">
+        <a href="earings5.html">
+            <img src="assets/images/Screenshot 2025-08-22 132536-min.png" alt="Earrings 1"/>
+        </a>
+        <div class="collection-info">
+            <h5>Temple Earrings</h5><p>22k Gold</p>
+            <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['https://via.placeholder.com/400x300?text=Earrings+1', 'https://via.placeholder.com/400x300?text=Temple+Earrings+2', 'https://via.placeholder.com/400x300?text=Temple+Earrings+3']" data-title="Temple Earrings">View</button>
+        </div>
+    </div>
+</div>
+        </div>
+        
+       
+          <div id="bridal" class="jewellery-section row g-4">
+            <h3 class="section-title w-100">Bridal Sets</h3>
+         <div class="col-md-4">
+    <div class="collection-card">
+        <a href="bridal1.html">
+            <img src="assets/images/Screenshot 2025-08-22 151007-min.png" alt="Bridal Set"/>
+        </a>
+        <div class="collection-info">
+            <h5>Royal Bridal Set</h5><p>24k Gold</p>
+            <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['https://via.placeholder.com/400x300?text=Bridal+Set', 'https://via.placeholder.com/400x300?text=Royal+Bridal+Set+2', 'https://via.placeholder.com/400x300?text=Royal+Bridal+Set+3']" data-title="Royal Bridal Set">View</button>
+        </div>
+    </div>
+</div>
+
+        <div class="col-md-4">
+    <div class="collection-card">
+        <a href="bridal2.html">
+            <img src="assets/images/Screenshot 2025-08-22 150500-min.png" alt="Bridal Set"/>
+        </a>
+        <div class="collection-info">
+            <h5>Royal Bridal Set</h5><p>24k Gold</p>
+            <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['https://via.placeholder.com/400x300?text=Bridal+Set', 'https://via.placeholder.com/400x300?text=Royal+Bridal+Set+2', 'https://via.placeholder.com/400x300?text=Royal+Bridal+Set+3']" data-title="Royal Bridal Set">View</button>
+        </div>
+    </div>
+</div>
+
+                   <div class="col-md-4">
+    <div class="collection-card">
+        <a href="bridal3.html">
+            <img src="assets/images/Screenshot 2025-08-22 151651-min.png" alt="Bridal Set"/>
+        </a>
+        <div class="collection-info">
+            <h5>Royal Bridal Set</h5><p>24k Gold</p>
+            <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['https://via.placeholder.com/400x300?text=Bridal+Set', 'https://via.placeholder.com/400x300?text=Royal+Bridal+Set+2', 'https://via.placeholder.com/400x300?text=Royal+Bridal+Set+3']" data-title="Royal Bridal Set">View</button>
+        </div>
+    </div>
+</div>
+                   <div class="col-md-4">
+    <div class="collection-card">
+        <a href="bridal4.html">
+            <img src="assets/images/Screenshot 2025-08-22 151319-min.png" alt="Bridal Set"/>
+        </a>
+        <div class="collection-info">
+            <h5>Royal Bridal Set</h5><p>24k Gold</p>
+            <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['https://via.placeholder.com/400x300?text=Bridal+Set', 'https://via.placeholder.com/400x300?text=Royal+Bridal+Set+2', 'https://via.placeholder.com/400x300?text=Royal+Bridal+Set+3']" data-title="Royal Bridal Set">View</button>
+        </div>
+    </div>
+</div>
+                  <div class="col-md-4">
+    <div class="collection-card">
+        <a href="bridal5.html">
+            <img src="assets/images/Screenshot 2025-08-22 152021-min.png" alt="Bridal Set"/>
+        </a>
+        <div class="collection-info">
+            <h5>Royal Bridal Set</h5><p>24k Gold</p>
+            <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['https://via.placeholder.com/400x300?text=Bridal+Set', 'https://via.placeholder.com/400x300?text=Royal+Bridal+Set+2', 'https://via.placeholder.com/400x300?text=Royal+Bridal+Set+3']" data-title="Royal Bridal Set">View</button>
+        </div>
+    </div>
+</div>
+        </div>
+        
+        
+        
+        <div id="rings" class="jewellery-section row g-4">
+            <h3 class="section-title w-100">Rings</h3>
+     <div class="col-md-4">
+  <div class="collection-card">
+    <!-- Image click -> go to another page -->
+    <a href="rings1.html">
+      <img src="assets/images/Screenshot 2025-08-22 153201-min.png" alt="Ring" class="img-fluid"/></a>
+<div class="collection-info">
+      <h5>Flower Ring</h5>
+      <p>18k Gold</p>
+      <!-- Button click -> open modal -->
+      <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images="['https://via.placeholder.com/400x300?text=Ring+1', 'https://via.placeholder.com/400x300?text=Solitaire+Ring+2', 'https://via.placeholder.com/400x300?text=Solitaire+Ring+3']"data-title="Solitaire Ring">View</button>
+    </div>
+  </div>
+</div>
+
+
+     <div class="col-md-4">
+  <div class="collection-card">
+    <!-- Image click -> go to another page -->
+    <a href="rings2.html">
+      <img src="assets/images/Screenshot 2025-08-22 152606-min.png" alt="Ring" class="img-fluid"/></a>
+<div class="collection-info">
+      <h5>Flower Ring</h5>
+      <p>18k Gold</p>
+      <!-- Button click -> open modal -->
+      <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images="['https://via.placeholder.com/400x300?text=Ring+1', 'https://via.placeholder.com/400x300?text=Solitaire+Ring+2', 'https://via.placeholder.com/400x300?text=Solitaire+Ring+3']"data-title="Solitaire Ring">View</button>
+    </div>
+  </div>
+</div>
+
+
+      <div class="col-md-4">
+  <div class="collection-card">
+    <!-- Image click -> go to another page -->
+    <a href="rings3.html">
+      <img src="assets/images/Screenshot 2025-08-22 152606-min.png" alt="Ring" class="img-fluid"/></a>
+<div class="collection-info">
+      <h5>Flower Ring</h5>
+      <p>18k Gold</p>
+      <!-- Button click -> open modal -->
+      <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images="['https://via.placeholder.com/400x300?text=Ring+1', 'https://via.placeholder.com/400x300?text=Solitaire+Ring+2', 'https://via.placeholder.com/400x300?text=Solitaire+Ring+3']"data-title="Solitaire Ring">View</button>
+    </div>
+  </div>
+</div>
+
+
+         <div class="col-md-4">
+  <div class="collection-card">
+    <!-- Image click -> go to another page -->
+    <a href="rings4.html">
+      <img src="assets/images/Screenshot 2025-08-22 152418-min.png" alt="Ring" class="img-fluid"/></a>
+<div class="collection-info">
+      <h5>Flower Ring</h5>
+      <p>18k Gold</p>
+      <!-- Button click -> open modal -->
+      <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images="['https://via.placeholder.com/400x300?text=Ring+1', 'https://via.placeholder.com/400x300?text=Solitaire+Ring+2', 'https://via.placeholder.com/400x300?text=Solitaire+Ring+3']"data-title="Solitaire Ring">View</button>
+    </div>
+  </div>
+</div>
+
+         <div class="col-md-4">
+  <div class="collection-card">
+    <!-- Image click -> go to another page -->
+    <a href="rings5.html">
+      <img src="assets/images/Screenshot 2025-08-22 152154-min.png" alt="Ring" class="img-fluid"/></a>
+<div class="collection-info">
+      <h5>Flower Ring</h5>
+      <p>18k Gold</p>
+      <!-- Button click -> open modal -->
+      <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images="['https://via.placeholder.com/400x300?text=Ring+1', 'https://via.placeholder.com/400x300?text=Solitaire+Ring+2', 'https://via.placeholder.com/400x300?text=Solitaire+Ring+3']"data-title="Solitaire Ring">View</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+        <div id="bangles" class="jewellery-section row g-4">
+            <h3 class="section-title w-100">Bangles</h3>
+          <div class="col-md-4">
+  <div class="collection-card">
+    <!-- Image click -> go to another page -->
+    <a href="bangles1.html">
+      <img src="assets/images/Screenshot 2025-08-22 155001-min.png" alt="Bangle" class="img-fluid"/></a>
+<div class="collection-info">
+      <h5>Bridal Bangle</h5>
+      <p>22k Gold</p>
+      <!-- Button click -> open modal -->
+      <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images="['https://via.placeholder.com/400x300?text=Bangle+1', 'https://via.placeholder.com/400x300?text=Classic+Bangle+2', 'https://via.placeholder.com/400x300?text=Classic+Bangle+3']"data-title="Classic Bangle">View</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-md-4">
+  <div class="collection-card">
+    <!-- Image click -> go to another page -->
+    <a href="bangles2.html">
+      <img src="assets/images/Screenshot 2025-08-22 154526-min.png" alt="Bangle" class="img-fluid"/></a>
+<div class="collection-info">
+      <h5>Bridal Bangle</h5>
+      <p>22k Gold</p>
+      <!-- Button click -> open modal -->
+      <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images="['https://via.placeholder.com/400x300?text=Bangle+1', 'https://via.placeholder.com/400x300?text=Classic+Bangle+2', 'https://via.placeholder.com/400x300?text=Classic+Bangle+3']"data-title="Classic Bangle">View</button>
+    </div>
+  </div>
+</div>
+
+
+
+     <div class="col-md-4">
+  <div class="collection-card">
+    <!-- Image click -> go to another page -->
+    <a href="bangles3.html">
+      <img src="assets/images/Screenshot 2025-08-22 154213-min.png" alt="Bangle" class="img-fluid"/></a>
+<div class="collection-info">
+      <h5>Bridal Bangle</h5>
+      <p>22k Gold</p>
+      <!-- Button click -> open modal -->
+      <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images="['https://via.placeholder.com/400x300?text=Bangle+1', 'https://via.placeholder.com/400x300?text=Classic+Bangle+2', 'https://via.placeholder.com/400x300?text=Classic+Bangle+3']"data-title="Classic Bangle">View</button>
+    </div>
+  </div>
+</div>
+
+    <div class="col-md-4">
+  <div class="collection-card">
+    <!-- Image click -> go to another page -->
+    <a href="bangles4.html">
+      <img src="assets/images/Screenshot 2025-08-22 153539-min.png" alt="Bangle" class="img-fluid"/></a>
+<div class="collection-info">
+      <h5>Bridal Bangle</h5>
+      <p>22k Gold</p>
+      <!-- Button click -> open modal -->
+      <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images="['https://via.placeholder.com/400x300?text=Bangle+1', 'https://via.placeholder.com/400x300?text=Classic+Bangle+2', 'https://via.placeholder.com/400x300?text=Classic+Bangle+3']"data-title="Classic Bangle">View</button>
+    </div>
+  </div>
+</div>
+
+
+  <div class="col-md-4">
+  <div class="collection-card">
+    <!-- Image click -> go to another page -->
+    <a href="bangles5.html">
+      <img src="assets/images/sc" alt="Bangle" class="img-fluid"/></a>
+<div class="collection-info">
+      <h5>Bridal Bangle</h5>
+      <p>22k Gold</p>
+      <!-- Button click -> open modal -->
+      <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images="['https://via.placeholder.com/400x300?text=Bangle+1', 'https://via.placeholder.com/400x300?text=Classic+Bangle+2', 'https://via.placeholder.com/400x300?text=Classic+Bangle+3']"data-title="Classic Bangle">View</button>
+    </div>
+  </div>
+</div>
+
+        </div>
+
+        <div class="testimonial-box">
+            <h4 class="text-center mb-3">What Our Customers Say</h4>
+            <p>"Absolutely stunning designs and quality. Perfect for any special occasion!"</p>
+            <p>"Great craftsmanship and service. My bridal jewellery was a dream come true."</p>
+        </div>
+
+        <!-- Diamond Section -->
+            <div class="container py-5" style="background-image: url('assets/images/bg-diamond.jpg'); background-size: cover; background-position: center;">
+  <h1 class="text-center text-warning mb-2">✨ Diamond Jewellery Collection ✨</h1>
+  <p class="text-center fs-5 mb-4">
+    Explore our 💍 premium diamond necklaces, rings, and more designed for elegance & sparkle.
+  </p>
+
+  <div class="text-center mb-5">
+    <button class="btn btn-warning px-4 py-2 fw-bold" onclick="document.getElementById('enquiry').scrollIntoView({behavior: 'smooth'})">
+      📩 Enquire Now
+    </button>
+  </div>
+
+  <div class="text-center filter-buttons mb-4">
+    <button class="btn btn-outline-dark filter-btn mx-1" onclick="showSection('diamond-all', this)">All</button>
+    <button class="btn btn-outline-dark filter-btn mx-1" onclick="showSection('diamond-necklaces', this)">Necklaces</button>
+    <button class="btn btn-outline-dark filter-btn mx-1" onclick="showSection('diamond-earrings', this)">Earrings</button>
+    <button class="btn btn-outline-dark filter-btn mx-1" onclick="showSection('diamond-rings', this)">Rings</button>
+    <button class="btn btn-outline-dark filter-btn mx-1" onclick="showSection('diamond-bangles', this)">Bangles</button>
+  </div>
+
+  <div id="diamond-all" class="jewellery-section row g-4 active">
+    <h3 class="section-title w-100">Top Diamond Collections</h3>
+    <div class="col-md-3">
+      <div class="collection-card">
+        <img src="assets/images/diamond necklace.jpg" alt="Diamond Necklace"/>
+        <div class="collection-info">
+          <h5>Elegant Diamond Necklace</h5>
+          <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['assets/images/diamond-necklace.jpg', 'https://via.placeholder.com/400x300?text=Diamond+Necklace+2', 'https://via.placeholder.com/400x300?text=Diamond+Necklace+3']" data-title="Elegant Diamond Necklace">View</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="collection-card">
+        <img src="assets/images/de1.jpg" alt="Diamond Earrings"/>
+        <div class="collection-info">
+          <h5>Chandelier Diamond Earrings</h5>
+          <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['assets/images/diamond-earrings.jpg', 'https://via.placeholder.com/400x300?text=Diamond+Earrings+2', 'https://via.placeholder.com/400x300?text=Diamond+Earrings+3']" data-title="Chandelier Diamond Earrings">View</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="collection-card">
+        <img src="assets/images/dr1.jpg" alt="Diamond Ring"/>
+        <div class="collection-info">
+          <h5>Classic Diamond Ring</h5>
+          <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['assets/images/diamond-ring.jpg', 'https://via.placeholder.com/400x300?text=Diamond+Ring+2', 'https://via.placeholder.com/400x300?text=Diamond+Ring+3']" data-title="Classic Diamond Ring">View</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="collection-card">
+        <img src="assets/images/diamond bangles.jpg" alt="Diamond Bangle"/>
+        <div class="collection-info">
+          <h5>Luxury Diamond Bangle</h5>
+          <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal" data-images="['assets/images/diamond-bangle.jpg', 'https://via.placeholder.com/400x300?text=Diamond+Bangle+2', 'https://via.placeholder.com/400x300?text=Diamond+Bangle+3']" data-title="Luxury Diamond Bangle">View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Diamond Necklaces -->
+    <div id="diamond-necklaces" class="jewellery-section row g-4">
+        <h3 class="section-title w-100">Diamond Necklaces</h3>
+        <div class="col-md-4">
+            <div class="collection-card">
+                <img src="assets/images/diamond.jpg" alt="Diamond Necklace"/>
+                <div class="collection-info">
+                    <h5>Elegant Diamond Necklace</h5>
+                    <p>18k Gold Base</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+                        data-images="['assets/images/diamond-necklace.jpg', 'https://via.placeholder.com/400x300?text=Necklace+2']"
+                        data-title="Elegant Diamond Necklace">View</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="collection-card">
+                <img src="assets/images/diamond necklace.jpg" alt="Diamond Necklace"/>
+                <div class="collection-info">
+                    <h5>Elegant Diamond Necklace</h5>
+                    <p>18k Gold Base</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+                        data-images="['assets/images/diamond-necklace.jpg', 'https://via.placeholder.com/400x300?text=Necklace+2']"
+                        data-title="Elegant Diamond Necklace">View</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="collection-card">
+                <img src="assets/images/diamond-necklace.jpg" alt="Diamond Necklace"/>
+                <div class="collection-info">
+                    <h5>Elegant Diamond Necklace</h5>
+                    <p>18k Gold Base</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+                        data-images="['assets/images/diamond-necklace.jpg', 'https://via.placeholder.com/400x300?text=Necklace+2']"
+                        data-title="Elegant Diamond Necklace">View</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="collection-card">
+                <img src="assets/images/diamond-necklace.jpg" alt="Diamond Necklace"/>
+                <div class="collection-info">
+                    <h5>Elegant Diamond Necklace</h5>
+                    <p>18k Gold Base</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+                        data-images="['assets/images/diamond-necklace.jpg', 'https://via.placeholder.com/400x300?text=Necklace+2']"
+                        data-title="Elegant Diamond Necklace">View</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Diamond Earrings -->
+    <div id="diamond-earrings" class="jewellery-section row g-4">
+        <h3 class="section-title w-100">Diamond Earrings</h3>
+        <div class="col-md-4">
+            <div class="collection-card">
+                <img src="assets/images/de1.jpg" alt="Diamond Earrings"/>
+                <div class="collection-info">
+                    <h5>Stud Earrings</h5>
+                    <p>18k Gold + Diamonds</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+                        data-images="['assets/images/diamond-earrings.jpg']"
+                        data-title="Stud Earrings">View</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="collection-card">
+                <img src="assets/images/de2.jpg" alt="Diamond Earrings"/>
+                <div class="collection-info">
+                    <h5>Stud Earrings</h5>
+                    <p>18k Gold + Diamonds</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+                        data-images="['assets/images/diamond-earrings.jpg']"
+                        data-title="Stud Earrings">View</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="collection-card">
+                <img src="assets/images/de3.jpg" alt="Diamond Earrings"/>
+                <div class="collection-info">
+                    <h5>Stud Earrings</h5>
+                    <p>18k Gold + Diamonds</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+                        data-images="['assets/images/diamond-earrings.jpg']"
+                        data-title="Stud Earrings">View</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="collection-card">
+                <img src="assets/images/de44[1].jpg" alt="Diamond Earrings"/>
+                <div class="collection-info">
+                    <h5>Stud Earrings</h5>
+                    <p>18k Gold + Diamonds</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+                        data-images="['assets/images/diamond-earrings.jpg']"
+                        data-title="Stud Earrings">View</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="collection-card">
+                <img src="assets/images/de5.jpg" alt="Diamond Earrings"/>
+                <div class="collection-info">
+                    <h5>Stud Earrings</h5>
+                    <p>18k Gold + Diamonds</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+                        data-images="['assets/images/diamond-earrings.jpg']"
+                        data-title="Stud Earrings">View</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Diamond Rings -->
+    <div id="diamond-rings" class="jewellery-section row g-4">
+        <h3 class="section-title w-100">Diamond Rings</h3>
+        <div class="col-md-4">
+            <div class="collection-card">
+                <img src="assets/images/dr55[1].jpg" alt="Diamond Ring"/>
+                <div class="collection-info">
+                    <h5>Classic Diamond Ring</h5>
+                    <p>18k White Gold</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+                        data-images="['assets/images/diamond-ring.jpg']"
+                        data-title="Classic Diamond Ring">View</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="collection-card">
+                <img src="assets/images/dr4.jpg" alt="Diamond Ring"/>
+                <div class="collection-info">
+                    <h5>Classic Diamond Ring</h5>
+                    <p>18k White Gold</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+                        data-images="['assets/images/diamond-ring.jpg']"
+                        data-title="Classic Diamond Ring">View</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="collection-card">
+                <img src="assets/images/dr1.jpg" alt="Diamond Ring"/>
+                <div class="collection-info">
+                    <h5>Classic Diamond Ring</h5>
+                    <p>18k White Gold</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+                        data-images="['assets/images/diamond-ring.jpg']"
+                        data-title="Classic Diamond Ring">View</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="collection-card">
+                <img src="assets/images/dr2.jpg" alt="Diamond Ring"/>
+                <div class="collection-info">
+                    <h5>Classic Diamond Ring</h5>
+                    <p>18k White Gold</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+                        data-images="['assets/images/diamond-ring.jpg']"
+                        data-title="Classic Diamond Ring">View</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="collection-card">
+                <img src="assets/images/dr3.jpg" alt="Diamond Ring"/>
+                <div class="collection-info">
+                    <h5>Classic Diamond Ring</h5>
+                    <p>18k White Gold</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+                        data-images="['assets/images/diamond-ring.jpg']"
+                        data-title="Classic Diamond Ring">View</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="collection-card">
+                <img src="assets/images/dr66[1].jpg" alt="Diamond Ring"/>
+                <div class="collection-info">
+                    <h5>Classic Diamond Ring</h5>
+                    <p>18k White Gold</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+                        data-images="['assets/images/diamond-ring.jpg']"
+                        data-title="Classic Diamond Ring">View</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+<!-- Diamond Bangles -->
+    <div id="diamond-bangles" class="jewellery-section row g-4">
+        <h3 class="section-title w-100">Diamond Bangles</h3>
+        <div class="col-md-4">
+            <div class="collection-card">
+                <img src="assets/images/diamond-ring.jpg" alt="Diamond Bangles"/>
+                <div class="collection-info">
+                    <h5>Classic Diamond Bables</h5>
+                    <p>18k White Gold</p>
+                    <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+                        data-images="['assets/images/diamond-ring.jpg']"
+                        data-title="Classic Diamond Bangles">View</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  <!-- Repeat similar structure for #diamond-necklaces, #diamond-earrings, etc. -->
+</div>
+
+
+<!-- Silver Section -->
+            <div class="container py-5" style="background-image: url('assets/images/bg-diamond.jpg'); background-size: cover; background-position: center;">
+  <h1 class="text-center text-warning mb-2">✨ Silver Jewellery and Items Collection ✨</h1>
+  <p class="text-center fs-5 mb-4">
+    Explore our 💍 premium diamond necklaces, rings, and more designed for elegance & sparkle.
+  </p>
+
+  
+
+  <!-- Silver Filter Buttons -->
+<div class="text-center filter-buttons mb-4">
+  <button class="btn btn-outline-dark filter-btn mx-1" onclick="showSection('silver-all', this)">All</button>
+  <button class="btn btn-outline-dark filter-btn mx-1" onclick="showSection('silver-dias', this)">Dias</button>
+      <button class="btn btn-outline-dark filter-btn mx-1" onclick="showSection('pooja-set', this)">Pooja Set</button>
+  <button class="btn btn-outline-dark filter-btn mx-1" onclick="showSection('silver-earrings', this)">Earrings</button>
+    <button class="btn btn-outline-dark filter-btn mx-1" onclick="showSection('silver-anklets', this)">Anklets</button>
+  <button class="btn btn-outline-dark filter-btn mx-1" onclick="showSection('silver-rings', this)">Rings</button>
+</div>
+
+<!-- Silver All Collection -->
+<div id="silver-all" class="jewellery-section row g-4" style="display: flex;">
+  <h3 class="section-title w-100">Top Silver Collections</h3>
+
+  <div class="col-md-3">
+    <div class="collection-card">
+      <img src="assets/images/sp1.jpg" alt="Silver Pooja items" />
+      <div class="collection-info">
+        <h5>Silver Pooja items</h5>
+        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal"
+          data-bs-target="#jewelleryModal"
+          data-images="['assets/images/silver-necklace.jpg', 'https://via.placeholder.com/400x300?text=Silver+Necklace+2', 'https://via.placeholder.com/400x300?text=Silver+Necklace+3']"
+          data-title="Royal Silver Necklace">View</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="collection-card">
+      <img src="assets/images/silver4.jpg" alt="Elegant Silver Dias" />
+      <div class="collection-info">
+        <h5>Elegant Silver Dias</h5>
+        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal"
+          data-bs-target="#jewelleryModal"
+          data-images="['assets/images/silver-earrings.jpg', 'https://via.placeholder.com/400x300?text=Silver+Earrings+2', 'https://via.placeholder.com/400x300?text=Silver+Earrings+3']"
+          data-title="Elegant Silver Earrings">View</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="collection-card">
+      <img src="assets/images/silver3.jpg" alt="Silver Bridal Akllet" />
+      <div class="collection-info">
+        <h5>Silver Bridal Akllet </h5>
+        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal"
+          data-bs-target="#jewelleryModal"
+          data-images="['assets/images/silver-bridal.jpg', 'https://via.placeholder.com/400x300?text=Silver+Bridal+2', 'https://via.placeholder.com/400x300?text=Silver+Bridal+3']"
+          data-title="Silver Bridal Akllet">View</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="collection-card">
+      <img src="assets/images/sr1.jpg" alt="Silver Ring" />
+      <div class="collection-info">
+        <h5>925 Silver Ring</h5>
+        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal"
+          data-bs-target="#jewelleryModal"
+          data-images="['assets/images/silver-ring.jpg', 'https://via.placeholder.com/400x300?text=Silver+Ring+2', 'https://via.placeholder.com/400x300?text=Silver+Ring+3']"
+          data-title="925 Silver Ring">View</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Dias -->
+<div id="silver-dias" class="jewellery-section row g-4">
+  <h3 class="section-title w-100">Dias</h3>
+  <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/sd1.jpg" alt="Silver Dias" />
+      <div class="collection-info">
+        <h5>Silver Dias</h5>
+        <p>Handcrafted silver diyas for your festive rituals.</p>
+        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images='["assets/images/dias.jpg"]'
+        data-title="Silver Dias">View</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/sd2_6_11zon.jpg" alt="Silver Dias" />
+      <div class="collection-info">
+        <h5>Silver Dias</h5>
+        <p>Handcrafted silver diyas for your festive rituals.</p>
+        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images='["assets/images/dias.jpg"]'
+        data-title="Silver Dias">View</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/sd3_7_11zon.jpg" alt="Silver Dias" />
+      <div class="collection-info">
+        <h5>Silver Dias</h5>
+        <p>Handcrafted silver diyas for your festive rituals.</p>
+        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images='["assets/images/dias.jpg"]'
+        data-title="Silver Dias">View</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/sd4_8_11zon.jpg" alt="Silver Dias" />
+      <div class="collection-info">
+        <h5>Silver Dias</h5>
+        <p>Handcrafted silver diyas for your festive rituals.</p>
+        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images='["assets/images/dias.jpg"]'
+        data-title="Silver Dias">View</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/sd4.jpg" alt="Silver Dias" />
+      <div class="collection-info">
+        <h5>Silver Dias</h5>
+        <p>Handcrafted silver diyas for your festive rituals.</p>
+        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images='["assets/images/dias.jpg"]'
+        data-title="Silver Dias">View</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/sd5.jpg" alt="Silver Dias" />
+      <div class="collection-info">
+        <h5>Silver Dias</h5>
+        <p>Handcrafted silver diyas for your festive rituals.</p>
+        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images='["assets/images/dias.jpg"]'
+        data-title="Silver Dias">View</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Pooja Set Section -->
+<div id="pooja-set" class="jewellery-section row g-4">
+  <h3 class="section-title w-100 text-center">Silver Pooja Set</h3>
+
+  <div class="col-md-4">
+    <div class="collection-card p-3 bg-light rounded shadow-sm">
+      <img src="assets/images/st1.jpg" alt="Silver Pooja Set" class="img-fluid rounded">
+      <div class="collection-info mt-3 text-center">
+        <h5>Elegant Silver Pooja Set</h5>
+        <p>Includes thali, diya, bell, kalash and more</p>
+        <button class="btn btn-sm btn-info mt-2"
+                data-bs-toggle="modal"
+                data-bs-target="#jewelleryModal"
+                data-images='[
+                  "assets/images/pooja-set1.jpg",
+                  "assets/images/pooja-set2.jpg",
+                  "assets/images/pooja-set3.jpg",
+                  "assets/images/pooja-set4.jpg", "assets/images/pooja-set5.jpg"]'
+                data-title="Elegant Silver Pooja Set">
+          View
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/st2_9_11zon.jpg" alt="Silver Pooja Set" />
+      <div class="collection-info">
+        <h5>Silver Pooja Set</h5>
+        <p>Elegant silver pooja thali sets with diya and kalash.</p>
+        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images='["assets/images/pooja-set.jpg"]'
+        data-title="Silver Pooja Set">View</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/st3_10_11zon.jpg" alt="Silver Pooja Set" />
+      <div class="collection-info">
+        <h5>Silver Pooja Set</h5>
+        <p>Elegant silver pooja thali sets with diya and kalash.</p>
+        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images='["assets/images/pooja-set.jpg"]'
+        data-title="Silver Pooja Set">View</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/st4.jpg" alt="Silver Pooja Set" />
+      <div class="collection-info">
+        <h5>Silver Pooja Set</h5>
+        <p>Elegant silver pooja thali sets with diya and kalash.</p>
+        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images='["assets/images/pooja-set.jpg"]'
+        data-title="Silver Pooja Set">View</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/st5.jpg" alt="Silver Pooja Set" />
+      <div class="collection-info">
+        <h5>Silver Pooja Set</h5>
+        <p>Elegant silver pooja thali sets with diya and kalash.</p>
+        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"data-images='["assets/images/pooja-set.jpg"]'
+        data-title="Silver Pooja Set">View</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- Silver Anklets -->
+<div id="silver-anklets" class="jewellery-section row g-4">
+  <h3 class="section-title w-100 text-center text-secondary">Silver Anklets</h3>
+
+  <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/silver2.jpg" alt="Elegant Silver Anklets" class="img-fluid" />
+      <div class="collection-info p-3">
+        <h5 class="fw-bold">Elegant Silver Anklets</h5>
+        <p class="text-muted">925 Sterling Silver</p>
+        <button 
+          class="btn btn-sm btn-info mt-2" 
+          data-bs-toggle="modal" 
+          data-bs-target="#jewelleryModal"
+          data-images='["assets/images/silver-bangle.jpg"]'data-title="Elegant Silver Anklets" >View</button>
+      </div>
+    </div>
+  </div>
+
+    <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/silver3.jpg" alt="Elegant Silver Anklets" class="img-fluid" />
+      <div class="collection-info p-3">
+        <h5 class="fw-bold">Elegant Silver Anklets</h5>
+        <p class="text-muted">925 Sterling Silver</p>
+        <button 
+          class="btn btn-sm btn-info mt-2" 
+          data-bs-toggle="modal" 
+          data-bs-target="#jewelleryModal"
+          data-images='["assets/images/silver-bangle.jpg"]'data-title="Elegant Silver Anklets" >View</button>
+      </div>
+    </div>
+  </div>
+
+    <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/anklet3.jpg" alt="Elegant Silver Anklets" class="img-fluid" />
+      <div class="collection-info p-3">
+        <h5 class="fw-bold">Elegant Silver Anklets</h5>
+        <p class="text-muted">925 Sterling Silver</p>
+        <button 
+          class="btn btn-sm btn-info mt-2" 
+          data-bs-toggle="modal" 
+          data-bs-target="#jewelleryModal"
+          data-images='["assets/images/silver-bangle.jpg"]'data-title="Elegant Silver Anklets" >View</button>
+      </div>
+    </div>
+  </div>
+
+    <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/anklet4.jpg" alt="Elegant Silver Anklets" class="img-fluid" />
+      <div class="collection-info p-3">
+        <h5 class="fw-bold">Elegant Silver Anklets</h5>
+        <p class="text-muted">925 Sterling Silver</p>
+        <button 
+          class="btn btn-sm btn-info mt-2" 
+          data-bs-toggle="modal" 
+          data-bs-target="#jewelleryModal"
+          data-images='["assets/images/silver-bangle.jpg"]'data-title="Elegant Silver Anklets" >View</button>
+      </div>
+    </div>
+  </div>
+
+    <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/anklets.jpg" alt="Elegant Silver Anklets" class="img-fluid" />
+      <div class="collection-info p-3">
+        <h5 class="fw-bold">Elegant Silver Anklets</h5>
+        <p class="text-muted">925 Sterling Silver</p>
+        <button 
+          class="btn btn-sm btn-info mt-2" 
+          data-bs-toggle="modal" 
+          data-bs-target="#jewelleryModal"
+          data-images='["assets/images/silver-bangle.jpg"]'data-title="Elegant Silver Anklets" >View</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Silver Rings -->
+<div id="silver-rings" class="jewellery-section row g-4">
+  <h3 class="section-title w-100">Silver Rings</h3>
+  <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/sr1.jpg" alt="Silver Rings" />
+      <div class="collection-info">
+        <h5>Elegant Silver Rings</h5>
+        <p>925 Sterling Silver</p>
+        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+          data-images="['assets/images/silver-bangle.jpg']"
+          data-title="Elegant Silver Rings">View</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/sr2.jpg" alt="Silver Rings" />
+      <div class="collection-info">
+        <h5>Elegant Silver Rings</h5>
+        <p>925 Sterling Silver</p>
+        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+          data-images="['assets/images/silver-bangle.jpg']"
+          data-title="Elegant Silver Rings">View</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/sr3.jpg" alt="Silver Rings" />
+      <div class="collection-info">
+        <h5>Elegant Silver Rings</h5>
+        <p>925 Sterling Silver</p>
+        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+          data-images="['assets/images/silver-bangle.jpg']"
+          data-title="Elegant Silver Rings">View</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/sr4.jpg" alt="Silver Rings" />
+      <div class="collection-info">
+        <h5>Elegant Silver Rings</h5>
+        <p>925 Sterling Silver</p>
+        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+          data-images="['assets/images/silver-bangle.jpg']"
+          data-title="Elegant Silver Rings">View</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="collection-card">
+      <img src="assets/images/sr5.jpg" alt="Silver Rings" />
+      <div class="collection-info">
+        <h5>Elegant Silver Rings</h5>
+        <p>925 Sterling Silver</p>
+        <button class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#jewelleryModal"
+          data-images="['assets/images/silver-bangle.jpg']"
+          data-title="Elegant Silver Rings">View</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="header-section" style=" background: linear-gradient(145deg, #fff9e6, #ffefd5); border: 3px solid #d4af37; box-shadow: inset 0 0 25px rgba(255, 215, 0, 0.3), 0 0 15px rgba(255, 215, 0, 0.5); padding: 40px 30px; border-radius: 15px; text-align: center; max-width: 900px; margin: 50px auto; position: relative; overflow: hidden;">
+
+  <div style="position: absolute; top: -20px; left: -20px; right: -20px; bottom: -20px; background: radial-gradient(circle at center, rgba(255, 255, 200, 0.1) 0%, transparent 70%); z-index: 0; animation: shimmer 4s infinite linear;"></div>
+
+  <h1 class="header-title" style="font-size: 2.5rem; font-weight: bold; color: #b18c00; z-index: 1; position: relative; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">Our Jewellery Making</h1>
+
+  <p class="header-subtitle" style="font-size: 1.2rem; color: #5c4400; margin-top: 10px; z-index: 1; position: relative;">
+    Witness the artistry behind every golden masterpiece ✨</p>
+</div>
+
+<style>
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+</style>  
+        <div class="row g-4">
+            <div class="col-md-6">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/VIDEO_ID1" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="col-md-6">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/VIDEO_ID2" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div id="enquiry" class="container my-5 p-4 bg-light rounded shadow">
+            <h4 class="text-center mb-3">📞 Get in Touch</h4>
+            <form>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="tel" class="form-control" placeholder="Your Mobile Number" required>
+                    </div>
+                    <div class="col-md-12">
+                        <textarea class="form-control" rows="3" placeholder="Your Message..."></textarea>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-success px-4">Submit Enquiry</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="floating-buttons">
+        <a href="https://wa.me/919999999999" target="_blank">WhatsApp</a>
+        <a href="tel:+919999999999" class="call">Call Us</a>
+    </div>
+
+    <div class="modal fade" id="jewelleryModal" tabindex="-1" aria-labelledby="jewelleryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="jewelleryModalLabel">Jewellery Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center" id="modal-images-container">
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-warning" onclick="document.getElementById('enquiry').scrollIntoView({behavior: 'smooth'}); $('#jewelleryModal').modal('hide');">Enquire Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Album Section -->
+  <section class="album-section">
+    
+    <div class="container">
+      <div class="album-header">
+        <h1>Our <span style="color: #d4af37;">Gallery</span></h1>
+        <p style="font-size: 22px;">"Visit our branch today — walk in with gold, walk out with instant cash!"</p>
+      </div>
+
+      
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="assets/images/branch b.jpg" alt="Gold Jewelry Collection">
+          <div class="gallery-overlay">
+            <div class="gallery-title">Our Main branch</div>
+            <div class="gallery-description">Visit our Branch to get instant cash</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/images/gl2.jpg" alt="Wedding Collection">
+          <div class="gallery-overlay">
+            <div class="gallery-title">Inagruation</div>
+            <div class="gallery-description">Inagruating with candles</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/images/gl3.jpg" alt="Traditional Designs">
+          <div class="gallery-overlay">
+            <div class="gallery-title">Traditional Designs</div>
+            <div class="gallery-description">Classic and traditional gold ornaments</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/images/gl4.jpg" alt="Modern Collection">
+          <div class="gallery-overlay">
+            <div class="gallery-title">Awards</div>
+            <div class="gallery-description">Contemporary and stylish gold jewelry</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/images/gl5.jpg" alt="Antique Pieces">
+          <div class="gallery-overlay">
+            <div class="gallery-title">Comapny Awards</div>
+            <div class="gallery-description">Rare and vintage gold collectibles</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/images/gl6.jpg" alt="Antique Pieces">
+          <div class="gallery-overlay">
+            <div class="gallery-title">Antique Pieces</div>
+            <div class="gallery-description">Rare and vintage gold collectibles</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/images/gl7.jpg" alt="Modrn Collectio">
+          <div class="gallery-overlay">
+            <div class="gallery-title">Modrn Collectio</div>
+            <div class="gallery-description">Rare and vintage gold collectibles</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/images/gl9.jpg" alt="Modrn Collectio">
+          <div class="gallery-overlay">
+            <div class="gallery-title">Modrn Collectio</div>
+            <div class="gallery-description">Rare and vintage gold collectibles</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/images/gl8.jpg" alt="Customer Stories">
+          <div class="gallery-overlay">
+            <div class="gallery-title">Customer Stories</div>
+            <div class="gallery-description">Happy moments with our valued customers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+ <!-- Footer -->
+  <footer class="footer p-4">
+    <div class="social-section">
+      <div class="d-flex gap-3 flex-wrap" style="min-width: 140px;"></div>
+      <span>Get connected with us on social networks:</span>
+      <a href="https://www.facebook.com/sristargold/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://in.linkedin.com/company/sristargold" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.instagram.com/sristargold" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/embed/pDc-zHBSuNA" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+
+
+    <div class="container py-5">
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-column">
+            <h6>Company Name</h6>
+            <p>SRISTAR GOLD COMPANY</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-column">
+            <h6>Services</h6>
+            <p><a href="#">Gold Exchange</a></p>
+            <p><a href="#">Sell Gold</a></p>
+            <p><a href="#">Rent Gold</a></p>
+            <p><a href="#">Pledged Gold</a></p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-column">
+            <h6>Links</h6>
+            <p><a href="index.html">Home</a></p>
+            <p><a href="about.html">About</a></p>
+            <p><a href="services.html">Services</a></p>
+            <p><a href="branches.html">Branches</a></p>
+            <p><a href="contact.html">Contact</a></p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-column">
+            <h6>Contact</h6>
+            <p><i class="fas fa-home"></i>280/1, Anniamma Arcade, 2nd Floor,<br> Sampige Road, 18th Cross Rd, signal,<br> Malleshwaram, Bengaluru.</p>
+            <p><i class="fas fa-envelope"></i> sristargoldcompany@gmail.com</p>
+            <p><i class="fas fa-phone"></i>+91 63 66 333 444</p>
+            <p><i class="fas fa-print"></i>+91 63 66 333 444</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+  
+   function showSection(sectionId, button) {
+    // Hide all jewellery sections
+    const sections = document.querySelectorAll('.jewellery-section');
+    sections.forEach(sec => {
+      sec.style.display = 'none';
+    });
+
+    // Show only the selected section
+    const activeSection = document.getElementById(sectionId);
+    if (activeSection) {
+      activeSection.style.display = 'flex'; // or 'block' depending on your layout
+    }
+
+    // Optional: Active button highlight
+    const buttons = document.querySelectorAll('.filter-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+  }
+
+
+        // Reveal on scroll effect
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  document.querySelectorAll('.collection-card').forEach(card => {
+    observer.observe(card);
+  });
+
+  // Modal functionality
+  const jewelleryModal = document.getElementById('jewelleryModal');
+  jewelleryModal.addEventListener('show.bs.modal', event => {
+    const button = event.relatedTarget;
+    const imagesData = JSON.parse(button.getAttribute('data-images'));
+    const title = button.getAttribute('data-title');
+
+    const modalTitle = jewelleryModal.querySelector('.modal-title');
+    const modalBody = jewelleryModal.querySelector('#modal-images-container');
+
+    modalTitle.textContent = title;
+    modalBody.innerHTML = '';
+
+    imagesData.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = title;
+      modalBody.appendChild(img);
+    });
+  });
+
+        function showSection(sectionId) {
+    const sections = document.querySelectorAll('.jewellery-section');
+    sections.forEach(sec => {
+      sec.classList.remove('active');
+    });
+
+     const activeSection = document.getElementById(sectionId);
+    if (activeSection) {
+      activeSection.classList.add('active');
+      activeSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+    </script>
+</body>
+</html>

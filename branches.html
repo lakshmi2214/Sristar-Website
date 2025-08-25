@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Branches - Sristar Gold Company</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <style>
+    /* Custom CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fcfcfc;
+      line-height: 1.6;
+    }
+
+    /* Top Header */
+    .top-header {
+      background-color: #000;
+      color: #f0f1e9;
+      padding: 8px 0;
+    }
+
+    .top-header .address {
+      font-size: 14px;
+    }
+
+    .social-icons a {
+      color: white;
+      background-color: #000;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: background 0.3s;
+      margin: 0 2px;
+    }
+
+    .social-icons a:hover {
+      background-color: #444;
+    }
+
+    /* Navigation */
+    .navbar {
+      background-color: white !important;
+      border-bottom: 1px solid #ddd;
+      padding: 12px 0;
+    }
+
+          .navbar-nav .nav-link {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-left: 15px;
+      white-space: nowrap;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: 100px;
+    }
+
+    .navbar-brand img {
+      height: 45px;
+      width: auto;
+    }
+
+    .company-name {
+      font-size: 24px;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .navbar-nav .nav-link {
+      color: #000 !important;
+      font-weight: 600;
+      padding: 8px 16px !important;
+      transition: color 0.3s;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: #d4af37 !important;
+    }
+
+    /* Page Header */
+   .page-header {
+  background: linear-gradient(135deg, #00754a, #004d32);
+  color: white;
+  padding: 100px 0 60px;
+  text-align: center;
+}
+
+    .page-header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb-custom {
+      font-size: 18px;
+      color: white;
+    }
+
+    .breadcrumb-custom a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .breadcrumb-custom span {
+      color: #ffd700;
+      font-weight: bold;
+    }
+
+    /* Floating action buttons container */
+        .floating-buttons {
+            position: fixed; /* Keeps the buttons fixed relative to the viewport */
+            bottom: 20px; /* Distance from the bottom of the viewport */
+            right: 20px; /* Distance from the right of the viewport */
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Space between buttons */
+            z-index: 1000; /* Ensures buttons are always on top of other content */
+        }
+        .floating-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px; /* Fixed width for consistent touch target on all devices */
+            height: 60px; /* Fixed height for consistent touch target on all devices */
+            border-radius: 50%; /* Makes the buttons circular */
+            color: white;
+            font-size: 28px; /* Larger icon size for better visibility */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out; /* Smooth transitions for hover effects */
+            cursor: pointer; /* Indicates the element is clickable */
+        }
+        .floating-button:hover {
+            transform: scale(1.1); /* Slight scale up on hover for visual feedback */
+        }
+        .call-button {
+            background-color:  #00754a; /* WhatsApp green for consistency */
+        }
+        .whatsapp-button {
+            background-color:  #00754a /* Standard WhatsApp green */
+        }
+        .like-button {
+            background-color: white; /* White background for the like button as requested */
+        }
+        .like-button .fa-heart {
+            color: #333; /* Dark grey for empty heart to be visible on white background */
+        }
+        .like-button .fa-heart.liked {
+            color: #EF4444; /* Red color when liked */
+        }
+
+
+    /* Branches */
+   
+    :root {
+    --primary-color: #ffc107; /* Bootstrap Warning color (Gold-ish) */
+    --dark-color: #212529;
+    --text-color: #495057;
+    --white-color: #fff;
+    --light-gray: #f8f9fa;
+    --stack-offset: 0px; /* CHANGED: Set to 0px to remove vertical stacking effect */
+    --blur-value: blur(5px); /* How much to blur other cards */
+    --transition-duration: 0.3s; /* Global transition speed */
+    /* NEW: Define a gold shadow color with a slight transparency for shine */
+    --gold-shadow-color: rgba(255, 193, 7, 0.4); /* Using primary-color with alpha */
+    --gold-shadow-strong: rgba(255, 193, 7, 0.6); /* Slightly stronger for hover/focus */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--light-gray);
+}
+
+.branches-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    position: relative;
+    overflow: hidden; /* Important for the stacked effect */
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.section-header h4 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--primary-color);
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.section-header h4::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.section-header h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    font-size: 2.8rem;
+}
+
+.section-header h2 span {
+    color: var(--primary-color) !important;
+}
+
+.section-header p {
+    font-size: 1.15rem;
+    color: var(--text-color);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Filter Buttons */
+.filter-buttons {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.filter-buttons .btn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    margin: 0 10px;
+    border-radius: 50px;
+    padding: 10px 30px;
+    transition: all var(--transition-duration) ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    background-color: var(--white-color);
+    border: 1px solid #ced4da;
+    color: var(--dark-color);
+}
+
+.filter-buttons .btn-warning {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--dark-color);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.filter-buttons .btn-outline-warning {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.filter-buttons .btn-outline-warning:hover,
+.filter-buttons .btn.active {
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+}
+
+/* Branch Cards - 3D Stack Effect */
+#branchesContainer {
+    perspective: 1000px;
+    display: flex; /* <-- THIS IS CRUCIAL: Makes children arrange in a row */
+    flex-wrap: wrap; /* <-- THIS IS CRUCIAL: Allows items to wrap to the next line */
+    gap: 30px; /* Spacing between grid items */
+}
+
+.branch-item {
+    flex: 0 0 calc(33.33% - 30px); /* <-- THIS IS CRUCIAL: Sets width for 3 columns */
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform var(--transition-duration) ease-out, z-index 0s calc(var(--transition-duration) * 1.2), filter var(--transition-duration) ease-in-out;
+    z-index: 1;
+    filter: blur(0);
+}
+
+/* Responsive adjustments for columns */
+@media (max-width: 991px) {
+    .branch-item {
+        flex: 0 0 calc(50% - 30px); /*  columns on medium screens */
+    }
+}
+
+@media (max-width: 767px) {
+    .branch-item {
+        flex: 0 0 100%; /* Full width on small screens */
+    }
+}
+
+/* Styles for Focused and Blurred states */
+.branch-item.focused {
+    z-index: 15; /* Ensure focused card is on top of blurred ones */
+    transform: translateY(0) translateZ(30px) scale(1.08) !important; /* More pronounced focus */
+    filter: blur(0) !important; /* No blur on focused item */
+    pointer-events: all; /* Ensure interactions are enabled on focused card */
+    /* CHANGED: Gold shine shadow for focused item */
+    box-shadow: 0 15px 30px var(--gold-shadow-strong), 0 0 0 5px var(--primary-color);
+}
+
+.branch-item.blurred {
+    filter: var(--blur-value);
+    pointer-events: none; /* Disable clicks on blurred cards to prevent unintended interaction */
+}
+
+/* Prevent hover effects on blurred items */
+.branch-item.blurred:hover {
+    /* CHANGED: Reset transform for blurred cards to ensure no vertical offset */
+    transform: translateY(0);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Reset shadow for blurred cards */
+}
+
+.branch-card {
+    background: var(--white-color);
+    border-radius: 15px;
+    overflow: hidden;
+    /* CHANGED: Initial box-shadow to gold shine */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1), 0 0 0 0 var(--gold-shadow-color); /* Added a transparent gold shadow initially */
+    /* CHANGED: Removed translateY based on --index to remove vertical stacking */
+    transform: translateY(0);
+    transition: transform var(--transition-duration) ease-out, box-shadow var(--transition-duration) ease-in-out;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #eee;
+    cursor: pointer; /* Indicates interactivity */
+}
+
+/* Hover effects for non-focused items */
+.branch-item:hover:not(.focused):not(.blurred) { /* Apply hover only if not focused and not blurred */
+    z-index: 10; /* Bring hovered non-focused item slightly forward */
+    transform: translateY(0) translateZ(20px) scale(1.05); /* Move forward and zoom in */
+}
+
+.branch-item:hover:not(.focused):not(.blurred) .branch-card {
+    /* CHANGED: Enhanced gold shine shadow on hover */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2), 0 0 0 3px var(--gold-shadow-color); /* Added a more prominent gold shadow */
+}
+
+.branch-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    transition: transform var(--transition-duration) ease-out;
+}
+
+.branch-item:hover img {
+    transform: scale(1.05); /* Image slightly zooms on hover */
+}
+
+.branch-overlay {
+    padding: 5px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.branch-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--dark-color);
+    margin-bottom: 10px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.branch-name::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.branch-address {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.branch-time {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.branch-time i {
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+.branch-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.location-btn,
+.whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-duration) ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.location-btn {
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+    flex-grow: 1;
+}
+
+.location-btn:hover {
+    background-color: #e0a800;
+    color: var(--dark-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp-btn {
+    background-color: #25d366;
+    color: var(--white-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 1.4rem;
+}
+
+.whatsapp-btn:hover {
+    background-color: #1da851;
+    transform: translateY(-2px) rotate(5deg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+   /* General Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa; /* Light background */
+            color: #343a40; /* Darker text for contrast */
+        }
+
+        .process-section {
+            background-color: #ffffff; /* White background for the section */
+            padding: 80px 0;
+        }
+
+        .section-header h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: #dc3545; /* Bootstrap danger red for emphasis */
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #212529; /* Dark text for main heading */
+            font-size: 2.5rem;
+        }
+
+        /* Process Flow Layout */
+       .process-flow {
+    display: flex;
+    flex-wrap: nowrap; /* Keep everything on one row */
+    gap: 20px;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+}
+
+.process-item {
+    flex: 0 0 auto;
+    width: 270px;
+}
+
+.curved-arrow-col {
+    flex: 0 0 auto;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+
+        /* Base Process Box Styling (Light AI Template) */
+        .process-box {
+    /* Remove background and border */
+    background: none;
+    border: none;
+
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: none;
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+        .process-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 193, 7, 0.8); /* Gold glow on hover */
+            border-color: #ffc107;
+        }
+
+        /* Unique Templates for Each Box */
+        /* Box 1 */
+        .process-item:nth-of-type(1) .process-box {
+            /* Default subtle light gradient */
+            border-top: 3px solid #ffc107; /* Top border accent */
+        }
+        .process-item:nth-of-type(1) .process-box:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 193, 7, 0.8);
+        }
+
+        /* Box 2 */
+        .process-item:nth-of-type(3) .process-box { /* Note: it's the 3rd .process-item due to arrow columns */
+            background: linear-gradient(145deg, #e0f7fa, #c5e7eb); /* Light blue gradient */
+            border-bottom: 3px solid #00bcd4; /* Cyan accent */
+        }
+        .process-item:nth-of-type(3) .process-box:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15), 0 0 20px rgba(0, 188, 212, 0.8); /* Cyan glow */
+            border-color: #00bcd4;
+        }
+        .process-item:nth-of-type(3) .process-number-wrapper { border-color: #00bcd4; }
+        .process-item:nth-of-type(3) .process-number { color: #00bcd4; }
+        .process-item:nth-of-type(3) .process-number-wrapper::before,
+        .process-item:nth-of-type(3) .process-number-wrapper::after { background-color: rgba(0, 188, 212, 0.4); }
+        .process-item:nth-of-type(3) .process-box:hover .process-number { color: #fff; } /* White number on hover */
+
+
+        /* Box 3 */
+        .process-item:nth-of-type(5) .process-box { /* 5th .process-item */
+            background: linear-gradient(145deg, #e8f5e9, #d0e8d2); /* Light green gradient */
+            border-right: 3px solid #4caf50; /* Green accent */
+        }
+        .process-item:nth-of-type(5) .process-box:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15), 0 0 20px rgba(76, 175, 80, 0.8); /* Green glow */
+            border-color: #4caf50;
+        }
+        .process-item:nth-of-type(5) .process-number-wrapper { border-color: #4caf50; }
+        .process-item:nth-of-type(5) .process-number { color: #4caf50; }
+        .process-item:nth-of-type(5) .process-number-wrapper::before,
+        .process-item:nth-of-type(5) .process-number-wrapper::after { background-color: rgba(76, 175, 80, 0.4); }
+        .process-item:nth-of-type(5) .process-box:hover .process-number { color: #fff; } /* White number on hover */
+
+
+        /* Box 4 */
+        .process-item:nth-of-type(7) .process-box { /* 7th .process-item */
+            background: linear-gradient(145deg, #f3e5f5, #e0c8e6); /* Light purple gradient */
+            border-left: 3px solid #9c27b0; /* Purple accent */
+        }
+        .process-item:nth-of-type(7) .process-box:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15), 0 0 20px rgba(156, 39, 176, 0.8); /* Purple glow */
+            border-color: #9c27b0;
+        }
+        .process-item:nth-of-type(7) .process-number-wrapper { border-color: #9c27b0; }
+        .process-item:nth-of-type(7) .process-number { color: #9c27b0; }
+        .process-item:nth-of-type(7) .process-number-wrapper::before,
+        .process-item:nth-of-type(7) .process-number-wrapper::after { background-color: rgba(156, 39, 176, 0.4); }
+        .process-item:nth-of-type(7) .process-box:hover .process-number { color: #fff; } /* White number on hover */
+
+
+        /* Number Styling and Wave Effect - VERTICAL SHAPE */
+        .process-number-wrapper {
+            position: relative;
+            width: 65px;
+            height: 95px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            background-color: #f0f0f0; /* Light background for the shape */
+            border: 2px solid #ffc107; /* Default orange border for numbers */
+            overflow: hidden;
+            box-shadow: inset 0 0 10px rgba(255, 193, 7, 0.2); /* Inner subtle glow */
+        }
+
+        .process-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #ffc107; /* Default orange color for numbers */
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+
+        /* Wave Effect using pseudo-elements */
+        .process-number-wrapper::before,
+        .process-number-wrapper::after {
+            content: '';
+            position: absolute;
+            border-radius: 20px;
+            background-color: rgba(255, 193, 7, 0.4); /* Default orange for waves */
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+            z-index: 1;
+            opacity: 0;
+        }
+
+        .process-number-wrapper::before {
+            width: 80%;
+            height: 80%;
+            transform: scale(0);
+        }
+
+        .process-number-wrapper::after {
+            width: 100%;
+            height: 100%;
+            transform: scale(0);
+            transition-delay: 0.1s;
+        }
+
+        /* Hover/Active state for wave effect */
+        .process-box:hover .process-number-wrapper::before,
+        .process-box:hover .process-number-wrapper::after,
+        .process-box.active .process-number-wrapper::before,
+        .process-box.active .process-number-wrapper::after {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .process-box:hover .process-number,
+        .process-box.active .process-number {
+            color: #ffc107; /* Default orange number on hover/active */
+        }
+
+        .process-box h5 {
+            color: #333; /* Darker text for titles */
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .process-box p {
+            font-size: 0.95rem;
+            color: #666; /* Slightly darker text for descriptions */
+            line-height: 1.5;
+        }
+
+        /* Curved Arrow Styling (SVG) */
+        .curved-arrow-col {
+            flex-basis: 5%;
+            max-width: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            height: 100px;
+        }
+
+        .curved-arrow-svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: visible;
+        }
+
+        .curved-arrow-svg path {
+            fill: none;
+            stroke: #cccccc; /* Light grey arrow color */
+            stroke-width: 2;
+            stroke-dasharray: 8 8;
+            animation: dash 10s linear infinite;
+        }
+
+        .curved-arrow-svg polygon {
+            fill: #cccccc; /* Arrowhead color */
+            stroke: none;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -1000;
+            }
+        }
+
+        /* Hide arrows on smaller screens */
+        @media (max-width: 991.98px) {
+            .process-flow {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .process-item {
+                flex-basis: 100%;
+                max-width: 80%;
+                margin-bottom: 30px;
+            }
+
+            .curved-arrow-col {
+                display: none;
+            }
+
+            /* Vertical dashed arrow for mobile */
+            .process-item:not(:last-child)::after {
+                content: '\f063'; /* Font Awesome arrow-down icon */
+                font-family: 'Font Awesome 5 Free'; /* Use Font Awesome font */
+                font-weight: 900; /* For solid icon */
+                display: block;
+                width: 2px; /* This will be overridden by icon width */
+                height: 50px; /* This will be overridden by icon height */
+                background: none; /* Remove previous background image */
+                margin: 20px auto;
+                position: relative;
+                color: #cccccc; /* Arrow color */
+                font-size: 1.5rem; /* Icon size */
+                line-height: 50px; /* Center icon vertically */
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            .process-item {
+                max-width: 95%;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .process-number-wrapper {
+                width: 55px;
+                height: 80px;
+                border-radius: 15px;
+            }
+            .process-number {
+                font-size: 2.2rem;
+            }
+            .process-number-wrapper::before,
+            .process-number-wrapper::after {
+                border-radius: 15px;
+            }
+        }
+
+    /* Get in Touch */
+      /* Get in Touch */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfbf8;
+    }
+
+    .get-in-touch-section {
+      min-height: 150vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 150px 15px;
+    }
+
+    .get-in-touch-wrapper {
+      display: flex;
+      flex-direction: row;
+      background-color: #fdfbf8;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .form-box {
+      flex: 1;
+      padding: 60px;
+    }
+
+    .form-box h2 {
+      font-weight: 800;
+      font-size: 36px;
+    }
+
+    .form-box h2 span {
+      color: red;
+    }
+
+    .form-control, .form-select {
+      border: 2px solid #935b3b;
+      border-radius: 8px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #935b3b;
+      margin-bottom: 6px;
+    }
+
+    .submit-btn {
+      background-color: #00754a;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 25px;
+    }
+
+    .image-box {
+      flex: 1;
+      background-color: #fff;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      .get-in-touch-wrapper {
+        flex-direction: column;
+      }
+
+      .form-box, .image-box {
+        width: 100%;
+      }
+
+      .image-box img {
+        height: auto;
+      }
+    }
+
+    /* Thank You */
+    .thank-you-modal .modal-content {
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      background: linear-gradient(to bottom, #f5f9ff, #eef3fa);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .thank-you-modal h1 {
+      font-size: 48px;
+      color: maroon;
+      font-weight: bold;
+    }
+
+    .thank-you-modal p {
+      font-size: 18px;
+      color: #4e4e80;
+    }
+
+    .gold-rate {
+      color: maroon;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .update-note {
+      font-style: italic;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .phone-number {
+      font-size: 24px;
+      font-weight: bold;
+      color: maroon;
+      margin-top: 10px;
+    }
+
+    .go-back-btn {
+      background-color: maroon;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      font-size: 16px;
+      border-radius: 30px;
+      margin-top: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 255, 0.1);
+    }
+
+    .go-back-btn:hover {
+      background-color: #900;
+    }
+
+    .form-section {
+      max-width: 600px;
+      margin: 80px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+
+    /* Footer */
+    .footer {
+      background-color: #1c2331;
+      color: #fff;
+      padding-top: 40px;
+    }
+
+    .footer .social-section {
+      background-color: #6351ce;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .footer .social-section span {
+      margin-right: 15px;
+      font-weight: 500;
+    }
+
+    .footer .social-section a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+    .footer .social-section a:hover {
+      color: #ffd700;
+    }
+
+    .footer-column h6 {
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .footer-column h6::after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: #6351ce;
+      margin-top: 6px;
+    }
+
+    .footer-column p,
+    .footer-column a {
+      color: #ccc;
+      font-size: 14px;
+      text-decoration: none;
+      line-height: 1.6;
+    }
+
+    .footer-column a:hover {
+      color: #ffd700;
+    }
+
+    .footer-column i {
+      margin-right: 10px;
+      color: #ffd700;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .top-header .address {
+        font-size: 12px;
+        text-align: center;
+      }
+
+      .company-name {
+        font-size: 18px;
+      }
+
+      .page-header h1 {
+        font-size: 2rem;
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+      }
+
+      .branch-card img {
+        height: 180px;
+      }
+
+      .branch-overlay {
+        padding: 20px;
+      }
+
+      .branch-name {
+        font-size: 20px;
+      }
+
+      .branch-actions {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .page-header {
+        padding: 60px 0 40px;
+      }
+
+      .branches-section {
+        padding: 60px 0;
+      }
+
+      .section-header h2 {
+        font-size: 1.8rem;
+      }
+
+      .filter-buttons .btn {
+        margin: 5px;
+        padding: 8px 16px;
+        font-size: 14px;
+      }
+
+      .branch-card {
+        margin-bottom: 20px;
+      }
+    }
+
+    /* Tablet specific styles */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .page-header h1 {
+        font-size: 2.5rem;
+      }
+
+      .section-header h2 {
+        font-size: 2.3rem;
+      }
+
+      .branch-card img {
+        height: 200px;
+      }
+    }
+
+    /* Animated Footer Social Icons */
+.footer .social-section a {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.footer .social-section a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent);
+  transition: left 0.6s ease;
+}
+
+.footer .social-section a:hover::before {
+  left: 100%;
+}
+
+.footer .social-section a:hover {
+  color: #ffd700;
+  transform: translateY(-3px) rotateY(15deg);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+}
+
+.footer .social-section a:nth-child(2n):hover {
+  transform: translateY(-3px) rotateY(-15deg);
+}
+
+.footer .social-section a i {
+  transition: all 0.3s ease;
+}
+
+.footer .social-section a:hover i {
+  transform: scale(1.2) rotateZ(360deg);
+}
+
+/* Pulse animation for social icons */
+@keyframes socialPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+  }
+}
+
+.footer .social-section a:hover {
+  animation: socialPulse 1.5s infinite;
+}
+
+/* Floating effect */
+@keyframes socialFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.footer .social-section a {
+  animation: socialFloat 3s ease-in-out infinite;
+}
+
+.footer .social-section a:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.footer .social-section a:nth-child(3) {
+  animation-delay: 1s;
+}
+.footer .social-section a:nth-child(4) {
+  animation-delay: 1.5s;
+}
+.footer .social-section a:nth-child(5) {
+  animation-delay: 2s;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <div class="top-header">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-8 col-12 text-center text-md-start">
+               <div class="address" style="font-size: 20px;">
+            #280/1, Anniamma Arcade, 2nd Floor, Sampige Road, Malleshwaram, Bangalore - 560003
+          </div>
+        </div>
+        <div class="col-md-4 col-12 text-center text-md-end mt-2 mt-md-0">
+          <div class="social-icons">
+            <a href="https://www.facebook.com/sristargold/" style="font-size: 20px;"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://in.linkedin.com/company/sristargold" style="font-size: 20px;"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/sristargold" style="font-size: 20px;"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/embed/pDc-zHBSuNA" style="font-size: 20px;"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/images/logo.jpg" alt="Sristar Gold Logo">
+        <span class="company-name">SRISTAR GOLD</span>
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="branches.html">Branches</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gold calculator.html">Gold Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="album.html">Album</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 style="font-size: 50px;">Our Branches</h1>
+      <div class="breadcrumb-custom">
+        <a href="index.html" style="font-size: 30px;">Home</a> / <span style="font-size: 30px;">Branches</span>
+      </div>
+    </div>
+  </section>
+  
+<!-- Floating Action Buttons Container -->
+    <div class="floating-buttons">
+        <!-- Phone Call Button -->
+        <a href="tel:+1234567890" class="floating-button call-button" aria-label="Call Us">
+            <i class="fas fa-phone"></i>
+        </a>
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/1234567890" target="_blank" class="floating-button whatsapp-button" aria-label="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <!-- Like Button -->
+        <button id="likeButton" class="floating-button like-button" aria-label="Like">
+            <i class="far fa-heart" id="heartIcon"></i>
+        </button>
+    </div>
+
+  <!-- Branches Section -->
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Branches - Focus & Blur Effect</title>
+    <link href="assets/images/back.jpg" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <section class="branches-section">
+        <div class="container">
+            <div class="section-header">
+                <h4 style="font-size: 2.5rem;">— BRANCHES</h4>
+                <h2 style="font-size: 25px;">Find Your <span style="color: #000;">Nearest Branch</span></h2>
+                
+            </div>
+
+            <div class="filter-buttons">
+                <button type="button" class="btn btn-warning active" onclick="filterBranches('all', this)">View All</button>
+                <button type="button" class="btn btn-outline-warning" onclick="filterBranches('karnataka', this)">Karnataka</button>
+                <button type="button" class="btn btn-outline-warning" onclick="filterBranches('tamilnadu', this)">Tamil Nadu</button>
+                 <button type="button" class="btn btn-outline-warning" onclick="filterBranches('Hyderabad', this)">Hyderabad</button>
+            </div>
+
+
+
+            
+            <div class="row g-4" id="branchesContainer">
+                <div class="col-lg-4 col-md-6 branch-item show" data-state="karnataka">
+                    <div class="branch-card">
+                        <img src="assets/images/branch b.jpg" alt="Malleshwaram Branch">
+                        <div class="branch-overlay">
+                            <div class="branch-name">Malleshwaram</div>
+                            <div class="branch-address" style="font-size: 20px;">28/1, Anniamma Arcade, 2nd Floor, Sampige Road, 18th Cross Rd, Signal, Malleshwaram, Bengaluru, Karnataka 560003</div>
+                            <div class="branch-time"><i class="far fa-calendar-alt"></i> Mon - Sat &nbsp;&nbsp;&nbsp; <i class="far fa-clock"></i> 9:00 AM - 7:00 PM</div>
+                            <div class="branch-actions">
+                                <a href="https://maps.google.com/?q=Malleshwaram,Bengaluru" class="location-btn" target="_blank"><i class="fas fa-map-marker-alt"></i> View Location</a>
+                                <a href="https://wa.me/919999999999" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="col-lg-4 col-md-6 branch-item show" data-state="karnataka">
+                    <div class="branch-card">
+                        <img src="assets/images/davanagere.jpg" alt="Davanagere Branch">
+                        <div class="branch-overlay">
+                            <div class="branch-name">Davanagere</div>
+                            <div class="branch-address" style="font-size: 20px;">#29/9 Chigateri Hospital Road Davanagere Opp. Corporation, Bank Near Vidyarti Bhavana Circle Karnataka - 577002</div>
+                            <div class="branch-time"><i class="far fa-calendar-alt"></i> Mon - Sat &nbsp;&nbsp;&nbsp; <i class="far fa-clock"></i> 9:00 AM - 7:00 PM</div>
+                            <div class="branch-actions">
+                                <a href="https://maps.google.com/?q=Davanagere,Karnataka" class="location-btn" target="_blank"><i class="fas fa-map-marker-alt"></i> View Location</a>
+                                <a href="https://wa.me/919999999999" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 branch-item show" data-state="karnataka">
+                    <div class="branch-card">
+                        <img src="assets/images/shivmogga.jpg" alt="Shivamoga Branch">
+                        <div class="branch-overlay">
+                            <div class="branch-name">Shivamogga</div>
+                            <div class="branch-address" style="font-size: 20px;">Gudagar Complex, 1st Floor Hosamani Siddappa Circle Beside KGP, Jewelry Haveri - 581110</div>
+                            <div class="branch-time"><i class="far fa-calendar-alt"></i> Mon - Sat &nbsp;&nbsp;&nbsp; <i class="far fa-clock"></i> 9:00 AM - 7:00 PM</div>
+                            <div class="branch-actions">
+                                <a href="https://maps.google.com/?q=Haveri,Karnataka" class="location-btn" target="_blank"><i class="fas fa-map-marker-alt"></i> View Location</a>
+                                <a href="https://wa.me/919999999999" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 branch-item show" data-state="karnataka">
+                    <div class="branch-card">
+                        <img src="assets/images/raichur.jpg" alt="Raichur Branch">
+                        <div class="branch-overlay">
+                            <div class="branch-name">Raichur</div>
+                            <div class="branch-address" style="font-size: 20px;">G.R.N. Complex, No.398/362 A, Shop No.5 Opposite to Govt. Junior College, B.B Road Chikkaballapur, Karnataka - 562101</div>
+                            <div class="branch-time"><i class="far fa-calendar-alt"></i> Mon - Sat &nbsp;&nbsp;&nbsp; <i class="far fa-clock"></i> 9:00 AM - 7:00 PM</div>
+                            <div class="branch-actions">
+                                <a href="https://maps.app.goo.gl/YourRaichurMapLink" class="location-btn" target="_blank"><i class="fas fa-map-marker-alt"></i> View Location</a>
+                                <a href="https://wa.me/919999999999" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 branch-item show" data-state="karnataka">
+                    <div class="branch-card">
+                        <img src="assets/images/hubli1[1].jpg" alt="Hubli Branch">
+                        <div class="branch-overlay">
+                            <div class="branch-name">Hubli</div>
+                            <div class="branch-address" style="font-size: 20px;">Shop No 40 Ground Floor, Tirumal Trade Centre, Neeligin Road, Near Channama Circle Hubli, Karnataka 580029</div>
+                            <div class="branch-time"><i class="far fa-calendar-alt"></i> Mon - Sat &nbsp;&nbsp;&nbsp; <i class="far fa-clock"></i> 9:00 AM - 7:00 PM</div>
+                            <div class="branch-actions">
+                                <a href="https://maps.google.com/?q=Hubli,Bengaluru" class="location-btn" target="_blank"><i class="fas fa-map-marker-alt"></i> View Location</a>
+                                <a href="https://wa.me/919999999999" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 branch-item show" data-state="karnataka">
+                    <div class="branch-card">
+                        <img src="assets/images/branch m.jpg" alt="Mysore Branch">
+                        <div class="branch-overlay">
+                            <div class="branch-name">Mysore</div>
+                            <div class="branch-address" style="font-size: 20px;">No. 912 Susheel Building, 2nd floor, sunnadakeri 4th cross, N S Road, Opp Nakshtra Complex, Mysuru, 570024</div>
+                            <div class="branch-time"><i class="far fa-calendar-alt"></i> Mon - Sat &nbsp;&nbsp;&nbsp; <i class="far fa-clock"></i> 9:00 AM - 7:00 PM</div>
+                            <div class="branch-actions">
+                                <a href="https://maps.app.goo.gl/YourMysoreMapLink" class="location-btn" target="_blank"><i class="fas fa-map-marker-alt"></i> View Location</a>
+                                <a href="https://wa.me/919999999999" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                           
+                <div class="col-lg-4 col-md-6 branch-item show" data-state="tamilnadu">
+                    <div class="branch-card">
+                        <img src="assets/images/chennai.jpg" alt="Chennai Branch">
+                        <div class="branch-overlay">
+                            <div class="branch-name">Chennai - Anna Nagar</div>
+                            <div class="branch-address" style="font-size: 20px;">10, 2nd Avenue, Anna Nagar, Chennai - 600040</div>
+                            <div class="branch-time"><i class="far fa-calendar-alt"></i> Mon - Sat &nbsp;&nbsp;&nbsp; <i class="far fa-clock"></i> 9:00 AM - 7:00 PM</div>
+                            <div class="branch-actions">
+                                <a href="https://maps.google.com/?q=Chennai,TamilNadu" class="location-btn" target="_blank"><i class="fas fa-map-marker-alt"></i> View Location</a>
+                                <a href="https://wa.me/919999999999" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                      
+                <div class="col-lg-4 col-md-6 branch-item show" data-state="Hyderabad">
+                    <div class="branch-card">
+                        <img src="assets/images/branch m.jpg" alt="Hyderabad Branch">
+                        <div class="branch-overlay">
+                            <div class="branch-name">Hyderabad</div>
+                            <div class="branch-address" style="font-size: 20px;">203 A Block 1st Floor,Musheerabad Main Road, Bakaram, Kavadiguda, Hyderabad, Telangana 500080 </div>
+                            <div class="branch-time"><i class="far fa-calendar-alt"></i> Mon - Sat &nbsp;&nbsp;&nbsp; <i class="far fa-clock"></i> 9:00 AM - 7:00 PM</div>
+                            <div class="branch-actions">
+                                <a href="https://maps.app.goo.gl/YourHyderabadMusheerabadMapLink" class="location-btn" target="_blank"><i class="fas fa-map-marker-alt"></i> View Location</a>
+                                <a href="https://wa.me/919999999999" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="col-lg-4 col-md-6 branch-item show" data-state="Hyderabad">
+                    <div class="branch-card">
+                        <img src="assets/images/branch m.jpg" alt="Mysore Branch">
+                        <div class="branch-overlay">
+                            <div class="branch-name">Hyderabad</div>
+                            <div class="branch-address" style="font-size: 20px;">#7 No 5-1-121/2, HCK Complex Mallapur Main Road, Annapurna Colony, Uppal Tq District, Hyderabad - 500076</div>
+                            <div class="branch-time"><i class="far fa-calendar-alt"></i> Mon - Sat &nbsp;&nbsp;&nbsp; <i class="far fa-clock"></i> 9:00 AM - 7:00 PM</div>
+                            <div class="branch-actions">
+                                <a href="https://maps.app.goo.gl/YourHyderabadMallapurMapLink" class="location-btn" target="_blank"><i class="fas fa-map-marker-alt"></i> View Location</a>
+                                <a href="https://wa.me/919999999999" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
+    <!-- Only the body content is shown here. Keep the same <head> and scripts as before. -->
+
+    
+            <div class="section-header text-center mb-5">
+                <h4 class="text-danger fw-bold mb-2">REQUEST A QUOTE</h4>
+                <h2 class="display-4 fw-bold text-dark mb-4">Working Process For Services</h2>
+            </div>
+
+
+              <div class="d-flex flex-nowrap gap-4 overflow-auto justify-content-center">
+
+
+                <!-- Step 1 -->
+                <div class="process-item wow fadeInLeft" data-wow-delay="0.2s">
+                    <div class="process-box text-center">
+                        <div class="process-number-wrapper">
+                            <div class="process-number">1</div>
+                        </div>
+                        <h5 class="fw-bold mt-3">Visit the Nearest Sristar Branch</h5>
+                        <p class="text-muted small">Bring gold to nearest Sristar branch using website or Maps.</p>
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="curved-arrow-col d-none d-lg-flex">
+                    <svg class="curved-arrow-svg" viewBox="0 0 100 100">
+                        <path d="M 10 50 C 30 20, 70 20, 90 50" />
+                        <polygon points="85,45 95,50 85,55" />
+                    </svg>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="process-item wow fadeInLeft" data-wow-delay="0.4s">
+                    <div class="process-box text-center active">
+                        <div class="process-number-wrapper">
+                            <div class="process-number">2</div>
+                        </div>
+                        <h5 class="fw-bold mt-3">Purity Check with German Technology</h5>
+                        <p class="text-muted small">Gold purity tested with German XRF machines, safe and accurate.</p>
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="curved-arrow-col d-none d-lg-flex">
+                    <svg class="curved-arrow-svg" viewBox="0 0 100 100">
+                        <path d="M 10 50 C 30 20, 70 20, 90 50" />
+                        <polygon points="85,45 95,50 85,55" />
+                    </svg>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="process-item wow fadeInLeft" data-wow-delay="0.6s">
+                    <div class="process-box text-center">
+                        <div class="process-number-wrapper">
+                            <div class="process-number">3</div>
+                        </div>
+                        <h5 class="fw-bold mt-3">Instant Evaluation & Best Price</h5>
+                        <p class="text-muted small">Gold evaluated by purity and market rate, best price offered.</p>
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="curved-arrow-col d-none d-lg-flex">
+                    <svg class="curved-arrow-svg" viewBox="0 0 100 100">
+                        <path d="M 10 50 C 30 20, 70 20, 90 50" />
+                        <polygon points="85,45 95,50 85,55" />
+                    </svg>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="process-item wow fadeInLeft" data-wow-delay="0.8s">
+                    <div class="process-box text-center">
+                        <div class="process-number-wrapper">
+                            <div class="process-number">4</div>
+                        </div>
+                        <h5 class="fw-bold mt-3">Get Instant Cash or Transfer</h5>
+                        <p class="text-muted small">Accept offer and receive instant payment via cash or transfer.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+   <!-- Get in Touch-->
+    <!-- Get in Touch Section -->
+  <section class="get-in-touch-section" id="contactForm">
+    <div class="get-in-touch-wrapper">
+      <!-- Form Box -->
+      <div class="form-box">
+        <h2 class="mb-4" style="font-size: 40px;">Get In Touch<span>!</span></h2>
+        <form id="enquiryForm">
+          <div class="mb-3">
+            <label for="name" style="font-size: 25px;">Name:</label>
+            <input type="text" class="form-control"  style="font-size: 20px;"id="name" placeholder="Name" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="contact" style="font-size: 25px;">Contact Number:</label>
+            <input type="text" class="form-control" style="font-size: 20px;" id="contact" placeholder="Contact number" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="type" style="font-size: 25px;">Select Type:</label>
+            <select class="form-select" id="type" required>
+              <option selected disabled>Select an option</option>
+              <option value="buy" style="font-size: 20px;">Buy</option>
+              <option value="sell" style="font-size: 20px;">Sell</option>
+            </select>
+          </div>
+
+          <div class="mb-4">
+            <label for="state" style="font-size: 25px;">Select Your State:</label>
+            <select class="form-select" id="state" required>
+              <option selected disabled style="font-size: 20px;">Select your state</option>
+              <option value="tn" style="font-size: 20px;">Tamil Nadu</option>
+              <option value="ka" style="font-size: 20px;">Karnataka</option>
+              <option value="ap" style="font-size: 20px;">Andhra Pradesh</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-btn" style="font-size: 30px;">SUBMIT</button>
+        </form>
+      </div>
+
+      <!-- Image Box -->
+      <div class="image-box">
+        <img src="assets/images/get.jpg" alt="Woman in Saree" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Thank You Modal -->
+  <div class="modal fade thank-you-modal" id="thankYouModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <h1>Thank You !</h1>
+        <p>Your response has been submitted!</p>
+
+        <div class="gold-rate mt-4">24K GOLD RATE: Rs.9450 /Gram</div>
+        <div class="gold-rate">22K GOLD RATE: Rs.8656 /Gram</div>
+
+        <div class="update-note mt-3">Updated one week ago!!!</div>
+
+        <p class="mt-3">For more queries, call us on</p>
+        <div class="phone-number">91 63 66 333 444</div>
+
+        <button class="go-back-btn" onclick="goBackToForm()">Go Back</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer p-4">
+    <div class="social-section">
+      <span>Get connected with us on social networks:</span>
+      <a href="https://www.facebook.com/sristargold/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://in.linkedin.com/company/sristargold" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.instagram.com/sristargold" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/embed/pDc-zHBSuNA" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <div class="container py-5">
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-column">
+            <h6>Company Name</h6>
+            <p>SRISTAR GOLD COMPANY</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-column">
+            <h6>Services</h6>
+            <p><a href="#">Gold Exchange</a></p>
+            <p><a href="#">Sell Gold</a></p>
+            <p><a href="#">Rent Gold</a></p>
+            <p><a href="#">Pledged Gold</a></p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-column">
+            <h6>Links</h6>
+            <p><a href="index.html">Home</a></p>
+            <p><a href="about.html">About</a></p>
+            <p><a href="services.html">Services</a></p>
+            <p><a href="branches.html">Branches</a></p>
+            <p><a href="contact.html">Contact</a></p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-column">
+            <h6>Contact</h6>
+            <p><i class="fas fa-home"></i>280/1, Anniamma Arcade, 2nd Floor,<br> Sampige Road, 18th Cross Rd, signal,<br> Malleshwaram, Bengaluru.</p>
+            <p><i class="fas fa-envelope"></i> sristargoldcompany@gmail.com</p>
+            <p><i class="fas fa-phone"></i>+91 63 66 333 444</p>
+            <p><i class="fas fa-print"></i>+91 63 66 333 444</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="js/branches.js"></script>
+  <!-- BOOTSTRAP & JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  
+<!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const form = document.getElementById('enquiryForm');
+    const thankYouModal = new bootstrap.Modal(document.getElementById('thankYouModal'));
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      thankYouModal.show();
+    });
+
+    function goBackToForm() {
+      thankYouModal.hide();
+      document.getElementById('contactForm').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

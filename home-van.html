@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Home & Van Services | AI-Powered</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- AOS (Animate on Scroll) CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: linear-gradient(to right, #f9f9f9, #f1f1f1);
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1581579185169-6f3c90553c84?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      height: 30vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+    .hero-content h1 {
+      font-weight: 700;
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px rgba(0,0,0,0.7);
+    }
+    .hero-content p {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 8px rgba(0,0,0,0.6);
+    }
+
+    /* AI Card Section */
+    .service-section {
+      padding: 80px 0;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .ai-card {
+      position: relative;
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .ai-card:hover {
+      transform: translateY(-8px);
+    }
+    .ai-border {
+      position: absolute;
+      inset: 0;
+      border: 2px solid transparent;
+      border-radius: 16px;
+      background: linear-gradient(135deg,#4caf50,#2196f3) border-box;
+      -webkit-mask:
+        linear-gradient(#fff 0 0) padding-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+              mask-composite: exclude;
+      pointer-events: none;
+    }
+    .ai-card h3 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #222;
+    }
+    .ai-card p {
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .ai-card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .ai-card ul li {
+      margin-bottom: 10px;
+      padding-left: 24px;
+      position: relative;
+    }
+    .ai-card ul li:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #007bff;
+      font-size: 1.2rem;
+      top: 0;
+      line-height: 1;
+    }
+    .ai-button {
+      display: inline-block;
+      padding: 12px 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(135deg,#4caf50,#2196f3);
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+    .ai-button:hover {
+      opacity: 0.85;
+    }
+    .ai-tag {
+      display: inline-block;
+      background: #e0f7fa;
+      color: #00796b;
+      padding: 4px 12px;
+      font-size: 0.85rem;
+      border-radius: 12px;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    /* Additional Sections (Home and Van) */
+    .home-service, .van-service {
+      padding: 80px 0;
+    }
+    .service-img {
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      width: 100%;
+      height: auto;
+    }
+    .service-img:hover {
+      transform: scale(1.03);
+    }
+    .ai-tag-alt {
+      display: inline-block;
+      background: #007bff;
+      color: white;
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+    .section-bg {
+      background: linear-gradient(to right, #e8f0fe, #ffffff);
+    }
+
+
+        body {
+      background: #f5f7fa;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 40px 20px;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .ai-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px 25px;
+      width: 280px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .ai-card:hover {
+      animation: floatCard 1s ease-in-out forwards;
+      box-shadow: 0 12px 30px rgba(0, 123, 255, 0.25);
+    }
+
+    .emoji {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+
+    .service-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #00754a;
+      margin-bottom: 10px;
+    }
+
+    .service-description {
+      font-size: 15px;
+      color: #444;
+    }
+
+    @keyframes floatCard {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+      100% {
+        transform: translateY(-4px);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .ai-card {
+        width: 90%;
+      }
+    }
+
+
+       /* Why Choose Us */
+     .icon-box {
+    padding: 25px;
+    background: #fff;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .gold-glow {
+    border: 2px solid gold;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+    animation: shimmerBorder 2.5s infinite ease-in-out;
+  }
+
+  .gold-glow:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 16px rgba(255, 215, 0, 0.9), 0 0 30px rgba(255, 215, 0, 0.4);
+  }
+
+  @keyframes shimmerBorder {
+    0% {
+      box-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    }
+    100% {
+      box-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
+    }
+  }
+
+
+  .custom-btn {
+    background: linear-gradient(45deg, #00754a, #00b76f);
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 183, 111, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .custom-btn:hover {
+    background: linear-gradient(45deg, #00b76f, #00754a);
+    box-shadow: 0 6px 20px rgba(0, 183, 111, 0.5);
+    transform: scale(1.05);
+  }
+
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  .popup-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    text-align: center;
+    animation: fadeInScale 0.4s ease-in-out;
+  }
+
+  @keyframes fadeInScale {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+
+    /* Icon Boxes */
+    .icon-box {
+      background: #f0f0f0;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform 0.3s ease-in-out, background 0.3s;
+    }
+    .icon-box:hover {
+      background: #0f8c0d;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    /* Testimonials */
+    .testimonial {
+      background-color: #f8f9fa;
+      padding: 60px 0;
+    }
+
+    /* Footer */
+    footer {
+      background: #343a40;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content text-center">
+      <h1 class="display-4 fw-bold">Smart Home & Van Services</h1>
+      <p class="lead">Care Right at Your Doorstep</p>
+    </div>
+  </section>
+
+ <h2 class="text-center mb-4">Our Services</h2>
+
+  <div class="card-container">
+    <!-- Home Service Card -->
+    <div class="ai-card">
+      <div class="emoji">🏠</div>
+      <div class="service-title">Home Service</div>
+      <div class="service-description">
+        We bring our services right to your home with ease and comfort.
+      </div>
+    </div>
+
+    <!-- Van Service Card -->
+    <div class="ai-card">
+      <div class="emoji">🚐</div>
+      <div class="service-title">Van Service</div>
+      <div class="service-description">
+        Our mobile van visits you directly for fast and secure service.
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Home Service Detailed Section -->
+  <section id="home-service" class="home-service section-bg"
+  style="background: url('assets/images/image-min.png') no-repeat center center; background-size: cover; background-attachment: fixed; padding: 60px 0;">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6" data-aos="fade-right">
+        <img src="assets/images/c9bca4c4-8df0-4e3e-9838-ecda1fbf5bad-min.png" class="service-img" alt="Home Service" style="max-width: 100%; border-radius: 10px;" />
+      </div>
+      <div class="col-md-6" data-aos="fade-left">
+        <span style="background: gold; padding: 5px 15px; border-radius: 5px; color: #000000; font-weight: 600; display: inline-block; margin-bottom: 10px;">AI Home Match</span>
+        <h2 style="font-size: 3rem; font-weight: 700; color: rgb(0, 0, 0);">Home Services</h2>
+        <p style="color: #000000;">Experience luxury and convenience with our exclusive Home Service. Our trusted gold experts visit your home to showcase a curated collection of gold jewellery. Enjoy complete privacy, personalized attention, and secure transactions—all from the comfort of your home.</p>
+        <ul style="color: #000000;">
+          <li>✨ Smart scheduling with AI</li>
+          <li>👷 Certified technicians</li>
+          <li>🔧 On-demand availability</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Van Service Detailed Section -->
+ <!-- Van Service Detailed Section -->
+<section id="van-service" class="van-service"
+  style="background: url('assets/images/image-min.png') no-repeat center center; background-size: cover; background-attachment: fixed; padding: 60px 0;">
+  <div class="container">
+    <div class="row align-items-center flex-md-row-reverse">
+      <div class="col-md-6" data-aos="fade-left">
+        <img src="assets/images/2d100a16-b921-4000-8128-422762739843-min.png" class="service-img" alt="Van Service"
+          style="max-width: 100%; border-radius: 10px;" />
+      </div>
+      <div class="col-md-6" data-aos="fade-right">
+        <span style="background: gold; padding: 5px 15px; border-radius: 5px; color: #000000; font-weight: 600; display: inline-block; margin-bottom: 10px;">Van Express</span>
+        <h2 style="font-size: 3rem; font-weight: 700; color: rgb(0, 0, 0);">Van Services</h2>
+        <p style="color: #000000; font-size: 18px;">Our mobile Gold Van is a fully equipped showroom on wheels, delivering gold jewellery shopping directly to your location. Safe, fast, and discreet, the van service brings our finest collections to your doorstep, ensuring a seamless and premium jewellery experience wherever you are.</p>
+        <ul style="color: #000000;">
+          <li>🚐 Mobile workshops with real-time tracking</li>
+          <li>⏱️ On-time arrival promise</li>
+          <li>🧠 AI for predictive repair tools</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ <!-- Why Choose Us Section -->
+<section class="container py-5">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold">Why Choose Us?</h2>
+  </div>
+  <div class="row g-4">
+    <div class="col-md-4" data-aos="zoom-in">
+      <div class="icon-box gold-glow">
+        <h5>✅ Certified Professionals</h5>
+        <p>All technicians are background-checked and trained.</p>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+      <div class="icon-box gold-glow">
+        <h5>🧠 AI-Powered Scheduling</h5>
+        <p>Reduce waiting times with intelligent allocation .</p>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+      <div class="icon-box gold-glow">
+        <h5>💬 24/7 Virtual Assistant</h5>
+        <p>AI chatbot helps you book and get updates anytime.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Contact Form Section -->
+<!-- Contact Section with Effects and AI Animations -->
+<section id="contactForm" class="py-5" style="background: linear-gradient(135deg, #f7f8fc, #eef0f6);">
+  <div class="container">
+    <!-- Decorative Header -->
+    <div class="text-center mb-5">
+      <h2 class="fw-bold" style="font-size: 2.5rem; color: #00754a; position: relative;">
+        Get in Touch
+        <span style="position: absolute; left: 50%; transform: translateX(-50%); bottom: -10px; height: 4px; width: 80px; background: gold; border-radius: 5px;"></span>
+      </h2>
+      <p style="font-size: 1.1rem; color: #555;">Have questions or want to book a service? Fill out the form below.</p>
+    </div>
+
+    <!-- Contact Form -->
+    <form id="contact-form">
+      <div class="row g-3">
+        <div class="col-md-6" data-aos="fade-up">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Your full name" required />
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="you@example.com" required />
+        </div>
+        <div class="col-12" data-aos="fade-up" data-aos-delay="200">
+          <label for="serviceType" class="form-label">Service Type</label>
+          <select class="form-select" id="serviceType" required>
+            <option selected disabled>Select a service</option>
+            <option value="home">🏠 Home Service</option>
+            <option value="van">🚐 Van Service</option>
+          </select>
+        </div>
+        <div class="col-12" data-aos="fade-up" data-aos-delay="300">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" rows="4" placeholder="Your message here..." required></textarea>
+        </div>
+        <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="400">
+          <button type="submit" class="btn custom-btn">🚀 Send Message</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Thank You Popup -->
+  <div id="thankYouPopup" class="popup-overlay">
+    <div class="popup-content">
+      <h4>🎉 Thank You!</h4>
+      <p>Your message has been successfully sent. We'll get back to you soon.</p>
+      <button onclick="closePopup()" class="btn btn-outline-success">Close</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("contact-form");
+  const popup = document.getElementById("thankYouPopup");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    // You could handle real submission here using AJAX
+    popup.style.display = "flex";
+    form.reset();
+  });
+
+  function closePopup() {
+    popup.style.display = "none";
+  }
+</script>
+
+
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    });
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book Home & Van Service</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #e6f2ff, #ffffff);
+      background-attachment: fixed;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Header */
+    .main-header {
+      background: #003366;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .main-header h1 {
+      font-size: 2rem;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+
+    /* Animated AI element */
+    .ai-bubble {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: rgba(0, 117, 170, 0.2);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .ai-bubble:nth-child(1) { top: 150px; left: 20px; animation-delay: 1s; }
+    .ai-bubble:nth-child(2) { top: 300px; right: 20px; animation-delay: 3s; }
+    .ai-bubble:nth-child(3) { bottom: 100px; left: 40%; animation-delay: 5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Card sections */
+    .container {
+      padding-top: 60px;
+      padding-bottom: 60px;
+      position: relative;
+    }
+
+    .service-info, .form-section {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+      margin-bottom: 30px;
+      animation: fadein 1s ease-in;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-primary {
+      background: #0073aa;
+      border: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background: #005b87;
+    }
+
+    .nav-pills .nav-link.active {
+      background: #0073aa;
+    }
+
+    .nav-link {
+      font-weight: 500;
+    }
+
+    h2, h4 {
+      color: #003366;
+    }
+
+    @media (max-width: 576px) {
+      .service-info, .form-section {
+        padding: 15px;
+      }
+    }
+
+    .back-home-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #28a745, gold);
+  color: #000;
+  font-weight: bold;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.back-home-btn:hover {
+  background: linear-gradient(135deg, gold, #28a745);
+  color: #fff;
+  box-shadow: 0 0 15px gold, 0 0 25px #28a745;
+  transform: translateY(-3px) scale(1.02);
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="main-header">
+    <h1>SRISTAR GOLD COMPANY</h1>
+    <p>Book Home or Van Jewellery Service</p>
+  </div>
+
+  <!-- AI Floating Bubbles -->
+  <div class="ai-bubble"></div>
+  <div class="ai-bubble"></div>
+  <div class="ai-bubble"></div>
+
+  <!-- Content Container -->
+  <div class="container">
+    <h2 class="mb-4 text-center">Book Your Service</h2>
+
+    <!-- Navigation Pills -->
+    <ul class="nav nav-pills mb-4 justify-content-center" id="serviceTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="pill" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home Service</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="van-tab" data-bs-toggle="pill" data-bs-target="#van" type="button" role="tab" aria-controls="van" aria-selected="false">Van Service</button>
+      </li>
+    </ul>
+
+    <!-- Tab Contents -->
+    <div class="tab-content" id="serviceTabContent">
+
+      <!-- Home Service Tab -->
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="service-info">
+          <h4>About Home Service</h4>
+          <p>Our experts come to your home with our secure gold services—offering gold selling, renting, and evaluations from your comfort zone.</p>
+          <ul>
+            <li>✔️ Flexible Scheduling</li>
+            <li>✔️ Discreet Doorstep Service</li>
+            <li>✔️ Instant Evaluation & Payment</li>
+          </ul>
+        </div>
+
+        <div class="form-section">
+          <form id="homeServiceForm" novalidate>
+            <div class="mb-3">
+              <label for="homeName" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="homeName" placeholder="Your full name" required />
+              <div class="invalid-feedback">Please enter your name.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="homeEmail" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="homeEmail" placeholder="you@example.com" required />
+              <div class="invalid-feedback">Please enter a valid email.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="homeServiceType" class="form-label">Service Type</label>
+              <select class="form-select" id="homeServiceType" required>
+                <option value="" disabled selected>Select a service</option>
+                <option value="sell">Sell Gold</option>
+                <option value="rent">Rent Gold</option>
+              </select>
+              <div class="invalid-feedback">Please select a service type.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="homeDate" class="form-label">Preferred Date</label>
+              <input type="date" class="form-control" id="homeDate" required />
+              <div class="invalid-feedback">Please choose a date.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="homeNotes" class="form-label">Additional Notes</label>
+              <textarea class="form-control" id="homeNotes" rows="3" placeholder="Any specific details or requests"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Submit Home Service Request</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Van Service Tab -->
+      <div class="tab-pane fade" id="van" role="tabpanel" aria-labelledby="van-tab">
+        <div class="service-info">
+          <h4>About Van Service</h4>
+          <p>Our mobile gold van service brings the jewellery experience to you—offering a luxury showroom on wheels with fast evaluations, real-time tracking, and trusted experts.</p>
+          <ul>
+            <li>✔️ Real-time GPS Tracking</li>
+            <li>✔️ Safe & Private Transactions</li>
+            <li>✔️ AI-Driven Support</li>
+          </ul>
+        </div>
+
+        <div class="form-section">
+          <form id="vanServiceForm" novalidate>
+            <div class="mb-3">
+              <label for="vanName" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="vanName" placeholder="Your full name" required />
+              <div class="invalid-feedback">Please enter your name.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="vanEmail" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="vanEmail" placeholder="you@example.com" required />
+              <div class="invalid-feedback">Please enter a valid email.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="vanLocation" class="form-label">Service Location</label>
+              <input type="text" class="form-control" id="vanLocation" placeholder="Your address or area" required />
+              <div class="invalid-feedback">Please enter your service location.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="vanDate" class="form-label">Preferred Date & Time</label>
+              <input type="datetime-local" class="form-control" id="vanDate" required />
+              <div class="invalid-feedback">Please choose a valid date and time.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="vanNotes" class="form-label">Additional Notes</label>
+              <textarea class="form-control" id="vanNotes" rows="3" placeholder="Any specific details or requests"></textarea>
+            </div>
+
+            <!-- Toast Container -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+  <div id="serviceToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="toastMessage">
+        Service submitted successfully!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+</form>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+            <!-- Back to Home Button -->
+<div class="text-center mt-5">
+  <a href="services.html" class="back-home-btn">⬅️ Back to Home</a>
+</div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+\<script>
+  (() => {
+    'use strict';
+
+    function validateForm(form) {
+      if (!form.checkValidity()) {
+        form.classList.add('was-validated');
+        return false;
+      }
+      return true;
+    }
+
+    function showToast(message) {
+      const toastEl = document.getElementById('serviceToast');
+      const toastMessage = document.getElementById('toastMessage');
+      toastMessage.textContent = message;
+      const toast = new bootstrap.Toast(toastEl);
+      toast.show();
+    }
+
+    const homeForm = document.getElementById('homeServiceForm');
+    const vanForm = document.getElementById('vanServiceForm');
+
+    homeForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!validateForm(this)) return;
+      showToast('Home Service request submitted successfully!');
+      this.reset();
+      this.classList.remove('was-validated');
+    });
+
+    vanForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!validateForm(this)) return;
+      showToast('Van Service request submitted successfully!');
+      this.reset();
+      this.classList.remove('was-validated');
+    });
+  })();
+</script>
+
+</html>

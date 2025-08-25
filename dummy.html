@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jewellery Chat Box</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .chat-box {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+      padding: 80px 100px;   /* reduced top padding so text comes closer */
+      width: 80%;
+      max-width: 900px;
+      margin: 50px auto;     /* less gap from top */
+      position: relative;
+      animation: floatBox 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatBox {
+      from { transform: translateY(0px); }
+      to { transform: translateY(-8px); }
+    }
+
+    .chat-box h3 {
+      text-align: center;
+      font-weight: bold;
+      color: #6a1b9a;
+      margin-bottom: 25px; /* tighter spacing */
+      font-size: 2rem;
+    }
+
+    /* Bigger input boxes */
+    .form-control {
+      border-radius: 20px;
+      border: 2px solid #d1c4e9;
+      transition: 0.3s;
+      height: 55px;            /* increase height */
+      font-size: 1.1rem;       /* increase text size */
+      padding: 15px 20px;      /* more padding inside */
+    }
+    textarea.form-control {
+      height: 120px;           /* bigger comment box */
+      resize: none;
+    }
+    .form-control:focus {
+      border-color: #ab47bc;
+      box-shadow: 0 0 10px #f48fb1;
+    }
+
+    .btn-submit {
+      background: linear-gradient(45deg, #d4af37, #ffd700);
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      padding: 14px 30px;
+      font-size: 1.1rem;
+      transition: 0.4s;
+    }
+    .btn-submit:hover {
+      background: linear-gradient(45deg, #ffd700, #d4af37);
+      transform: scale(1.05);
+      box-shadow: 0 0 15px gold;
+    }
+
+    /* Floating emojis (optional) */
+    .emoji {
+      position: absolute;
+      font-size: 2rem;
+      animation: floatEmoji 6s linear infinite;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+    @keyframes floatEmoji {
+      0% { transform: translateY(0); opacity: 0.8; }
+      50% { transform: translateY(-50px); opacity: 1; }
+      100% { transform: translateY(0); opacity: 0.8; }
+    }
+
+    /* Backdrop + Thank You popup */
+    #backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 1040;
+    }
+    .thank-you-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow: 0px 8px 25px rgba(0,0,0,0.25);
+      z-index: 1050;
+      min-width: 300px;
+      max-width: 90vw;
+      animation: popUp 0.35s ease forwards;
+    }
+    @keyframes popUp {
+      from { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
+      to   { transform: translate(-50%, -50%) scale(1);   opacity: 1; }
+    }
+    .thank-you-popup h4 {
+      color: #6a1b9a;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chat-box">
+    <h3>💬 Chat with Us 💎</h3>
+    <form id="chatForm">
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="👤 Your Name" required>
+      </div>
+      <div class="mb-3">
+        <input type="email" class="form-control" placeholder="📧 Your Email" required>
+      </div>
+      <div class="mb-3">
+        <input type="tel" class="form-control" placeholder="📞 Phone Number" required>
+      </div>
+      <div class="mb-3">
+        <textarea class="form-control" rows="3" placeholder="💡 Drop your Comment..." required></textarea>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn-submit">✨ Send ✨</button>
+      </div>
+    </form>
+
+    <!-- Floating emojis -->
+    <div class="emoji" style="top:20px; left:-40px;">💍</div>
+    <div class="emoji" style="bottom:20px; right:-40px;">😂</div>
+    <div class="emoji" style="top:50%; right:-30px;">👑</div>
+    <div class="emoji" style="bottom:50%; left:-30px;">💎</div>
+  </div>
+
+  <!-- Backdrop + Thank You Popup -->
+  <div id="backdrop" aria-hidden="true"></div>
+  <div class="thank-you-popup" id="thankPopup" role="dialog" aria-modal="true" aria-labelledby="tyTitle">
+    <h4 id="tyTitle">🎉 Thank You! 🎉</h4>
+    <p>Your response has been submitted successfully 💰💎✨</p>
+    <button class="btn btn-warning" id="okBtn">OK ✨</button>
+  </div>
+
+  <script>
+    const chatForm = document.getElementById("chatForm");
+    const thankPopup = document.getElementById("thankPopup");
+    const backdrop = document.getElementById("backdrop");
+    const okBtn = document.getElementById("okBtn");
+
+    function openPopup() {
+      backdrop.style.display = "block";
+      thankPopup.style.display = "block";
+      // optional: focus the OK button for accessibility
+      setTimeout(() => okBtn.focus(), 0);
+    }
+
+    function closePopup() {
+      thankPopup.style.display = "none";
+      backdrop.style.display = "none";
+    }
+
+    chatForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      openPopup();
+      // Auto-close after 3 seconds
+      setTimeout(() => {
+        closePopup();
+        chatForm.reset();
+      }, 3000);
+    });
+
+    okBtn.addEventListener("click", closePopup);
+    backdrop.addEventListener("click", closePopup);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closePopup();
+    });
+  </script>
+
+</body>
+</html>

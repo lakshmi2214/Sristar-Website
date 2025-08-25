@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisna Careers</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #5d3463;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+        }
+        
+        /* Custom styles to match the image */
+        .navbar-top {
+            background-color: #f8f9fa;
+        }
+
+        .navbar-top .nav-link, .navbar-top .btn {
+            color: var(--primary-color) !important;
+            font-size: 14px;
+        }
+
+        .navbar-main {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: var(--primary-color) !important;
+        }
+
+        .nav-link.active {
+            font-weight: 600;
+        }
+
+        .search-bar {
+            background-color: #f0eaf1;
+            border-radius: 25px;
+            padding: 5px 15px;
+        }
+
+        .search-bar .form-control {
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
+            font-size: 14px;
+        }
+
+        .search-bar .btn-search {
+            color: var(--primary-color);
+        }
+
+        .header-icons .icon-btn {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-left: 15px;
+        }
+
+        .secondary-nav {
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .secondary-nav .nav-link {
+            font-size: 1rem;
+            color: var(--primary-color);
+            padding: 1rem 0.75rem;
+        }
+
+        .secondary-nav .nav-link:hover {
+            color: #7a527f;
+        }
+
+        .breadcrumb-container {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb-container a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .breadcrumb-container a:hover {
+            text-decoration: underline;
+        }
+
+        .careers-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 4rem;
+            line-height: 1.2;
+            color: var(--primary-color);
+        }
+
+        .careers-section p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .image-container {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+       .image-container img {
+    width: 80%;
+    height: 500px;      /* increases height */
+    object-fit: fill;   /* stretches image */
+    display: block;
+}
+
+
+        .culture-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .culture-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .culture-text p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+.about-section {
+    position: relative;
+    background-image: url("assets/images/blog\ back.jpg"); /* only about section */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* parallax effect */
+    padding: 80px 0;
+    text-align: center;
+    color: #333;
+}
+
+/* keep your about-content styling */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+
+        .call-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            font-size: 1.5rem;
+            z-index: 1000;
+        }
+
+
+        body {
+      font-family: 'Georgia', serif;
+      background-color: #fffdf8;
+      color: #222;
+    }
+
+    /* Blog Container */
+    .blog-container {
+      max-width: 1500px;   /* keeps it neat */
+      margin: 0 auto;     /* center it */
+      padding: 30px 40px; /* space left/right */
+      background: #fffdf8;
+    }
+
+    /* Top header */
+    .gold-header {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    /* Section titles */
+    h3, h4 {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-weight: bold;
+      margin-top: 25px;
+      margin-bottom: 15px;
+    }
+
+    /* Gold text style */
+    .gold-text {
+      color: #b8860b; /* golden brown */
+      font-weight: bold;
+    }
+
+    /* Divider line */
+    .divider {
+      border-top: 1px solid #000;
+      margin: 30px 0;
+    }
+
+    /* Footer credit */
+    .footer-credit {
+      font-weight: bold;
+      margin-top: 40px;
+    }
+
+    /* Justify text */
+    p {
+      text-align: justify;
+      line-height: 1.7;
+    }
+        
+    </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light navbar-top py-1">
+    <div class="container-fluid d-flex align-items-center">
+        
+        <!-- Logo + Company Name -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="assets/images/logo.jpg" 
+                 alt="Sristar Gold Logo" width="100" height="auto" class="me-2">
+            <span class="company-name">Sristar Gold Company</span>
+        </a>
+
+    </div>
+</nav>
+
+<!-- Custom CSS for Golden Shining Text -->
+<style>
+.company-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700, #fff176);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite linear;
+}
+
+/* Shimmer effect */
+@keyframes shine {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+</style>
+
+
+    
+    <!-- Content Section 1: Careers and Job Opportunities -->
+    <div class="container-fluid mt-5 mb-5">
+        <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center p-5">
+                <div class="careers-section">
+                    <h1>Revealing The Mysterious of Gold</h1>
+                    <p class="mt-4"> With Srikanth Experience</p>
+                </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center">
+                <div class="image-container w-100">
+                    <img src="assets/images/blog1.jpg" alt="Decorative 'Hello' image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Section 2: About Section -->
+     
+<div class="about-section">
+    <div class="about-content">
+        <p>
+            In the luxurious universe of gold trading, Srikanth V, Founder and Director of Sristar Gold and Sristar Sona Chandi Limited, 
+            stands out as a guiding star of insight and expertise. His journey, deeply rooted in the trade of this precious metal, 
+            offers a glimpse into the complexities and beauty of gold. In a candid conversation, Srikanth shares invaluable insights 
+            on the varieties of gold, their value, and the innovative techniques used for purity assessment.
+        </p>
+
+        <!-- Styled Heading -->
+        <h4 class="expert-heading">The Spectrum of Gold Colors: Insights from the Expert</h4>
+        
+        <p>
+            Gold's allure lies not just in its economic value but in its cultural significance across civilizations. Discussing the types of gold, Srikanth reveals, "We have majorly three types of gold in the industry: yellow gold, rose gold, and white gold.
+        </p>
+    </div>
+</div>
+
+<!-- Custom CSS -->
+<style>
+.about-content {
+    text-align: justify; /* Aligns paragraphs neatly */
+}
+
+
+.expert-heading {
+    font-family: "Georgia", "Times New Roman", serif; /* Serif style like your image */
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    color: #000; /* clean black text */
+    margin: 20px 0;
+    text-align: left; /* Align left like screenshot */
+}
+</style>
+
+
+    <!-- Content Section 3: Sneak Peek -->
+    <div class="container-fluid mt-5 mb-5">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="culture-section">Yellow Gold</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 d-flex align-items-center">
+                <div class="image-container w-100">
+                    <img src="assets/images/yellow gold.jpg" alt="Image of office culture">
+                </div>
+            </div>
+            <div class="col-lg-6 d-flex flex-column justify-content-center p-5 culture-text">
+                
+                <p style="font-size: 25px;">
+                   "Yellow gold is the purest type of gold, made from pure gold and alloyed metals like zinc, copper, and silver," Srikanth explains. Its versatility and hypoallergenic properties make it a jewel in the crown of the gold industry.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Section 3: Sneak Peek -->
+<div class="container-fluid mt-5 mb-5">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h2 class="culture-section">Rose Gold</h2>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Text first -->
+        <div class="col-lg-6 d-flex flex-column justify-content-center p-5 culture-text order-lg-1">
+            <h3>Team at Sristar</h3>
+            <p style="font-size: 25px;">With its distinctive warm tint, rose gold is "an alloy of pure gold and copper," Srikanth states, specifying its composition as "75 percent gold and 25 percent copper." This blend offers a modern twist on traditional gold.</p>
+        </div>
+        <!-- Image second (right side) -->
+        <div class="col-lg-6 d-flex align-items-center order-lg-2">
+            <div class="image-container w-100">
+                <img src="https://placehold.co/1000x800/e9e1ec/4d4d4d?text=Office+Culture" alt="Image of office culture">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Content Section 3: Sneak Peek -->
+    <div class="container-fluid mt-5 mb-5">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="culture-section">White Gold</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 d-flex align-items-center">
+                <div class="image-container w-100">
+                    <img src="assets/images/white gold.jpg" alt="Image of office culture">
+                </div>
+            </div>
+            <div class="col-lg-6 d-flex flex-column justify-content-center p-5 culture-text">
+                <h3>Team at Sristar</h3>
+                <p style="font-size: 25px;">With its distinctive warm tint, rose gold is "an alloy of pure gold and copper," Srikanth states, specifying its composition as "75 percent gold and 25 percent copper." This blend offers a modern twist on traditional gold.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog-container">
+
+    <!-- Top Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div class="gold-header" style="font-size: 35px;">☀️ EXPLORING THE GOLDEN TRAILS</div>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- Yellow Gold -->
+    <h4 style="font-size: 30px;">The Crown Jewel: Yellow Gold’s Eminence</h4>
+    <p style="font-size: 25px;">
+      When asked about the most valuable gold type, Srikanth’s expertise shines through: 
+      <span class="gold-text">“Yellow gold. It has a purity of 91.6 percent.”</span>  
+      This declaration of yellow gold’s dominance highlights its lasting attractiveness 
+      and value in the market.
+    </p>
+
+    <!-- Purity Testing -->
+    <h4 style="font-size: 30px;">The Art and Science of Purity Testing:</h4>
+    <p style="font-size: 25px;">
+      In the quest for authenticity, the gold industry has seen significant advancements in testing methods. 
+      Srikanth outlines the evolution from traditional to modern techniques: 
+      “The organized sectors will use state-of-the-art technology. It is a non-destructive method. 
+      In older days, it was about rubbing the gold, but now, with modern technology, gold is kept inside 
+      a machine where the rays will be passed through the metal, and in 30 seconds, the exact results will be given.”
+    </p>
+    <p style="font-size: 25px;">
+      He also touches on traditional methods that persist due to their simplicity and directness, 
+      such as the “rubbing on a touchstone” and the use of “gold testing pens,” though he acknowledges 
+      their shortcomings when compared to modern technologies.
+    </p>
+
+    <!-- Future of Gold Trading -->
+    <h4 style="font-size: 30px;">Forward Through Innovation: The Future of Gold Trading:</h4>
+    <p style="font-size: 25px;">
+      Srikanth’s reflections provide a deep dive into the gold trading industry, highlighting the delicate 
+      balance between tradition and innovation. His experienced and knowledgeable voice navigates the complex 
+      world of gold, exploring its diverse types and the accuracy involved in assessing purity. As the industry 
+      forges ahead, the insights from leaders like Srikanth V ensure that the legacy and lure of gold remain 
+      as radiant as ever, captivating the imagination of traders, craftsmen, and consumers alike.
+    </p>
+
+
+
+
+
+    <!-- Floating Call Icon -->
+    <div class="call-icon">
+        <i class="fa-solid fa-phone"></i>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

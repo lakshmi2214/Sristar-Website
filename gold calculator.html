@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gold Calculator - Sristar Gold</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f4f3;
+    }
+
+    /* Top Header */
+    .top-header {
+      width: 100%;
+      background-color: #000;
+      color: #f0f1e9;
+      padding: 8px 20px;
+    }
+
+    .top-header .address {
+      font-size: 14px;
+    }
+
+    .social-icons a {
+      color: white;
+      background-color: #000;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: background 0.3s;
+      margin: 0 5px;
+    }
+
+    .social-icons a:hover {
+      background-color: #444;
+    }
+
+    /* Navigation */
+.navbar {
+  background-color: white !important;
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+}
+
+ .navbar-nav .nav-link {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-left: 15px;
+      white-space: nowrap;
+    }
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 100px;
+}
+
+.navbar-brand img {
+  height: 45px;
+  width: auto;
+}
+
+.company-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+}
+
+.navbar-nav .nav-link {
+  color: #000 !important;
+  font-weight: 600;
+  padding: 8px 16px !important;
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #d4af37 !important;
+}
+
+
+    /* Page Header */
+.page-header {
+  background: linear-gradient(135deg, #00754a, #004d32);
+  color: white;
+  padding: 100px 0 60px;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.breadcrumb-custom {
+  font-size: 16px;
+}
+
+.breadcrumb-custom a {
+  color: #ffd700;
+  text-decoration: none;
+}
+
+.breadcrumb-custom span {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+/* Floating action buttons container */
+        .floating-buttons {
+            position: fixed; /* Keeps the buttons fixed relative to the viewport */
+            bottom: 20px; /* Distance from the bottom of the viewport */
+            right: 20px; /* Distance from the right of the viewport */
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Space between buttons */
+            z-index: 1000; /* Ensures buttons are always on top of other content */
+        }
+        .floating-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px; /* Fixed width for consistent touch target on all devices */
+            height: 60px; /* Fixed height for consistent touch target on all devices */
+            border-radius: 50%; /* Makes the buttons circular */
+            color: white;
+            font-size: 28px; /* Larger icon size for better visibility */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out; /* Smooth transitions for hover effects */
+            cursor: pointer; /* Indicates the element is clickable */
+        }
+        .floating-button:hover {
+            transform: scale(1.1); /* Slight scale up on hover for visual feedback */
+        }
+        .call-button {
+            background-color:  #00754a; /* WhatsApp green for consistency */
+        }
+        .whatsapp-button {
+            background-color:  #00754a /* Standard WhatsApp green */
+        }
+        .like-button {
+            background-color: white; /* White background for the like button as requested */
+        }
+        .like-button .fa-heart {
+            color: #333; /* Dark grey for empty heart to be visible on white background */
+        }
+        .like-button .fa-heart.liked {
+            color: #EF4444; /* Red color when liked */
+        }
+
+
+    /* Calculator Styles */
+    .calculator-hero {
+      background: linear-gradient(135deg, #00754a, #004d32);
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .calculator-hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .calculator-hero .text-gold {
+      color: #ffd700;
+    }
+
+    .calculator-hero p {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .calculator-section {
+      padding: 80px 0;
+      background-color: #fff;
+    }
+
+    .calculator-card {
+      background: linear-gradient(135deg, #f9f4e7, #fbecc0);
+      border-radius: 25px;
+      border: 3px solid #d9c9a3;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .calculator-card h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1b1b1b;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 15px 15px 15px 50px;
+      border-radius: 10px;
+      border: 2px solid #d8cfae;
+      font-size: 1rem;
+      background-color: #fffef6;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #00754a;
+      box-shadow: 0 0 0 0.2rem rgba(0, 117, 74, 0.25);
+    }
+
+    .form-group i {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #666;
+      font-size: 1.2rem;
+    }
+
+    .btn-calculate {
+      width: 100%;
+      padding: 15px;
+      background-color: #b22222;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-calculate:hover {
+      background-color: #8b0000;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(178, 34, 34, 0.3);
+    }
+
+    .result-box {
+      text-align: center;
+      margin-top: 25px;
+      padding: 20px;
+      background-color: #e8f5e8;
+      border-radius: 10px;
+      border-left: 5px solid #00754a;
+      display: none;
+    }
+
+    .result-box.show {
+      display: block;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-box h4 {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #00754a;
+      margin-bottom: 10px;
+    }
+
+    .result-box .amount {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #000;
+    }
+
+    .disclaimer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #666;
+      font-style: italic;
+    }
+
+    .features-section {
+      background-color: #f8f9fa;
+      padding: 80px 0;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      height: 100%;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .feature-card i {
+      font-size: 3rem;
+      color: #00754a;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h4 {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #000;
+      margin-bottom: 15px;
+    }
+
+    .feature-card p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Footer Styles */
+    .footer {
+      background-color: #1c2331;
+      color: #fff;
+      padding-top: 40px;
+    }
+
+    .footer .social-section {
+      background-color: #6351ce;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .footer .social-section span {
+      margin-right: 15px;
+      font-weight: 500;
+    }
+
+    .footer .social-section a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 18px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      animation: socialFloat 3s ease-in-out infinite;
+    }
+
+    .footer .social-section a:nth-child(2) { animation-delay: 0.5s; }
+    .footer .social-section a:nth-child(3) { animation-delay: 1s; }
+    .footer .social-section a:nth-child(4) { animation-delay: 1.5s; }
+    .footer .social-section a:nth-child(5) { animation-delay: 2s; }
+
+    .footer .social-section a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .footer .social-section a:hover::before {
+      left: 100%;
+    }
+
+    .footer .social-section a:hover {
+      color: #ffd700;
+      transform: translateY(-3px) rotateY(15deg);
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+      animation: socialPulse 1.5s infinite;
+    }
+
+    .footer .social-section a:nth-child(2n):hover {
+      transform: translateY(-3px) rotateY(-15deg);
+    }
+
+    .footer .social-section a i {
+      transition: all 0.3s ease;
+    }
+
+    .footer .social-section a:hover i {
+      transform: scale(1.2) rotateZ(360deg);
+    }
+
+    @keyframes socialPulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+    }
+
+    @keyframes socialFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .footer-column h6 {
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .footer-column h6::after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: #6351ce;
+      margin-top: 6px;
+    }
+
+    .footer-column p,
+    .footer-column a {
+      color: #ccc;
+      font-size: 14px;
+      text-decoration: none;
+      line-height: 1.6;
+    }
+
+    .footer-column a:hover {
+      color: #ffd700;
+    }
+
+    .footer-column i {
+      margin-right: 10px;
+      color: #ffd700;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Header with Address and Social Icons -->
+  <div class="top-header">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-8">
+          <div class="address" style="font-size: 20px;">
+            #280/1, Anniamma Arcade, 2nd Floor, Sampige Road, Malleshwaram, Bangalore - 560003
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="social-icons d-flex justify-content-end">
+            <a href="https://www.facebook.com/sristargold/" target="_blank" style="font-size: 20px;"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://in.linkedin.com/company/sristargold" target="_blank" style="font-size: 20px;"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/sristargold?igsh=MWl1aGVoeTR0ZHA5cw==" target="_blank" style="font-size: 20px;"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/embed/pDc-zHBSuNA?si=MS3-SBNVAcRVb9dp" target="_blank" style="font-size: 20px;"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/images/logo.jpg" alt="Sristar Gold Logo">
+        <span class="company-name">SRISTAR GOLD</span>
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="branches.html">Branches</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gold calculator.html">Gold Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="album.html">Album</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<!-- Floating Action Buttons Container -->
+    <div class="floating-buttons">
+        <!-- Phone Call Button -->
+        <a href="tel:+1234567890" class="floating-button call-button" aria-label="Call Us">
+            <i class="fas fa-phone"></i>
+        </a>
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/1234567890" target="_blank" class="floating-button whatsapp-button" aria-label="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <!-- Like Button -->
+        <button id="likeButton" class="floating-button like-button" aria-label="Like">
+            <i class="far fa-heart" id="heartIcon"></i>
+        </button>
+    </div>
+
+  <!-- Calculator Hero Section -->
+  <div class="calculator-hero">
+    <div class="container">
+      <h1><span class="text-gold">Gold Rate</span> Calculator</h1>
+      <p>Get Free <span class="text-gold">Quote</span></p>
+      <p>Curious about how much your gold is worth?<br>Get a free quote with a quick and transparent evaluation.</p>
+    </div>
+  </div>
+
+  <!-- Calculator Section -->
+  <section class="calculator-section">
+    <div class="container">
+      <div class="calculator-card">
+        <h2>Fill the details to get the value for your gold</h2>
+
+        <form id="goldCalculatorForm">
+          <div class="form-group">
+            <i class="fas fa-map-marker-alt"></i>
+            <input type="text" id="city" placeholder="City" required />
+          </div>
+
+          <div class="form-group">
+            <i class="fas fa-ring"></i>
+            <select id="purity" required>
+              <option value="">Select the carat</option>
+              <option value="9938">24KT - ₹9,938/g</option>
+              <option value="9110">22KT - ₹9,110/g</option>
+              <option value="7454">18KT - ₹7,454/g</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <i class="fas fa-balance-scale"></i>
+            <input type="number" id="weight" placeholder="Gold in Grams" min="0.01" step="0.01" required />
+          </div>
+
+          <button type="button" class="btn-calculate" onclick="calculateGold()">Calculate Now</button>
+
+          <div class="result-box" id="result">
+            <h4>Estimated Value</h4>
+            <div class="amount" id="resultAmount">₹0</div>
+          </div>
+
+          <div class="disclaimer">
+            <small>*Estimated value only. Actual value may vary based on market conditions and gold purity testing.</small>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="container">
+      <div class="row text-center mb-5">
+        <div class="col-12">
+          <h2 class="display-5 fw-bold">Why Choose Our <span style="color: #00754a;">Gold Calculator?</span></h2>
+          <p class="lead">Get accurate estimates with our advanced calculation system</p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="feature-card">
+            <i class="fas fa-calculator"></i>
+            <h4>Accurate Calculations</h4>
+            <p>Our calculator uses real-time market rates to provide you with the most accurate gold value estimates.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="feature-card">
+            <i class="fas fa-chart-line"></i>
+            <h4>Live Market Rates</h4>
+            <p>Updated gold prices ensure you get current market value for your precious metals.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="feature-card">
+            <i class="fas fa-shield-alt"></i>
+            <h4>Secure & Private</h4>
+            <p>Your information is completely secure and private. We don't store any personal data.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="feature-card">
+            <i class="fas fa-mobile-alt"></i>
+            <h4>Mobile Friendly</h4>
+            <p>Calculate gold value on any device - desktop, tablet, or mobile phone.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="feature-card">
+            <i class="fas fa-clock"></i>
+            <h4>Instant Results</h4>
+            <p>Get immediate gold value calculations without any waiting time or registration.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="feature-card">
+            <i class="fas fa-handshake"></i>
+            <h4>Expert Support</h4>
+            <p>Need help? Our gold experts are available to assist you with any questions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer p-4">
+    <div class="social-section">
+      <span>Get connected with us on social networks:</span>
+      <a href="https://www.facebook.com/sristargold/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://in.linkedin.com/company/sristargold" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.instagram.com/sristargold" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/embed/pDc-zHBSuNA" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <div class="container py-5">
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-column">
+            <h6>Company Name</h6>
+            <p>SRISTAR GOLD COMPANY</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-column">
+            <h6>Services</h6>
+            <p><a href="#">Gold Exchange</a></p>
+            <p><a href="#">Sell Gold</a></p>
+            <p><a href="#">Rent Gold</a></p>
+            <p><a href="#">Pledged Gold</a></p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-column">
+            <h6>Links</h6>
+            <p><a href="index.html">Home</a></p>
+            <p><a href="about.html">About</a></p>
+            <p><a href="services.html">Services</a></p>
+            <p><a href="branches.html">Branches</a></p>
+            <p><a href="contact.html">Contact</a></p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-column">
+            <h6>Contact</h6>
+            <p><i class="fas fa-home"></i>280/1, Anniamma Arcade, 2nd Floor,<br> Sampige Road, 18th Cross Rd, signal,<br> Malleshwaram, Bengaluru.</p>
+            <p><i class="fas fa-envelope"></i> sristargoldcompany@gmail.com</p>
+            <p><i class="fas fa-phone"></i>+91 63 66 333 444</p>
+            <p><i class="fas fa-print"></i>+91 63 66 333 444</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function calculateGold() {
+      const city = document.getElementById("city").value.trim();
+      const purity = parseFloat(document.getElementById("purity").value);
+      const weight = parseFloat(document.getElementById("weight").value);
+      const resultBox = document.getElementById("result");
+      const resultAmount = document.getElementById("resultAmount");
+
+      // Validation
+      if (!city) {
+        alert("Please enter your city.");
+        return;
+      }
+
+      if (isNaN(purity) || purity <= 0) {
+        alert("Please select the carat.");
+        return;
+      }
+
+      if (isNaN(weight) || weight <= 0) {
+        alert("Please enter a valid gold weight.");
+        return;
+      }
+
+      // Calculate value
+      const totalValue = purity * weight;
+      
+      // Display result
+      resultAmount.textContent = `₹${totalValue.toLocaleString('en-IN')}`;
+      resultBox.classList.add('show');
+      
+      // Scroll to result
+      resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // Reset result when form inputs change
+    document.getElementById('city').addEventListener('input', hideResult);
+    document.getElementById('purity').addEventListener('change', hideResult);
+    document.getElementById('weight').addEventListener('input', hideResult);
+
+    function hideResult() {
+      const resultBox = document.getElementById("result");
+      resultBox.classList.remove('show');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisna Careers</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #5d3463;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+        }
+        
+        /* Custom styles to match the image */
+        .navbar-top {
+            background-color: #f8f9fa;
+        }
+
+        .navbar-top .nav-link, .navbar-top .btn {
+            color: var(--primary-color) !important;
+            font-size: 14px;
+        }
+
+        .navbar-main {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+      /* Container styling */
+.logo-container {
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.logo-container:hover {
+    transform: scale(1.05);
+}
+
+/* Logo image */
+.logo-img {
+    border-radius: 50%; /* makes logo circular */
+    border: 2px solid var(--primary-color);
+    padding: 5px;
+    background: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-container:hover .logo-img {
+    transform: rotate(-5deg) scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Company name */
+.company-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.logo-container:hover .company-name {
+    color: #d4af37; /* gold shade on hover */
+}
+
+        .nav-link.active {
+            font-weight: 600;
+        }
+
+        .search-bar {
+            background-color: #f0eaf1;
+            border-radius: 25px;
+            padding: 5px 15px;
+        }
+
+        .search-bar .form-control {
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
+            font-size: 14px;
+        }
+
+        .search-bar .btn-search {
+            color: var(--primary-color);
+        }
+
+        .header-icons .icon-btn {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-left: 15px;
+        }
+
+        .secondary-nav {
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .secondary-nav .nav-link {
+            font-size: 1rem;
+            color: var(--primary-color);
+            padding: 1rem 0.75rem;
+        }
+
+        .secondary-nav .nav-link:hover {
+            color: #7a527f;
+        }
+
+        .breadcrumb-container {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb-container a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .breadcrumb-container a:hover {
+            text-decoration: underline;
+        }
+
+        .careers-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 4rem;
+            line-height: 1.2;
+            color: var(--primary-color);
+        }
+
+        .careers-section p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .image-container {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+       .image-container img {
+    width: 80%;
+    height: 500px;      /* increases height */
+    object-fit: fill;   /* stretches image */
+    display: block;
+}
+
+
+        .culture-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .culture-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .culture-text p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+.about-section {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* parallax effect */
+    padding: 80px 0;
+    text-align: center;
+    color: #333;
+}
+
+
+/* keep your about-content styling */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+
+        .call-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            font-size: 1.5rem;
+            z-index: 1000;
+        }
+
+
+        body {
+      font-family: 'Georgia', serif;
+      background-color: #dfd3b4;
+      color: #222;
+    }
+
+    /* Blog Container */
+    .blog-container {
+      max-width: 1500px;   /* keeps it neat */
+      margin: 0 auto;     /* center it */
+      padding: 30px 40px; /* space left/right */
+      background: #fffdf8;
+    }
+
+    /* Top header */
+    .gold-header {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    /* Section titles */
+    h3, h4 {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-weight: bold;
+      margin-top: 25px;
+      margin-bottom: 15px;
+    }
+
+    /* Gold text style */
+    .gold-text {
+      color: #b8860b; /* golden brown */
+      font-weight: bold;
+    }
+
+    /* Divider line */
+    .divider {
+      border-top: 1px solid #000;
+      margin: 30px 0;
+    }
+
+    /* Footer credit */
+    .footer-credit {
+      font-weight: bold;
+      margin-top: 40px;
+    }
+
+    /* Justify text */
+    p {
+      text-align: justify;
+      line-height: 1.7;
+    }
+
+          /* Navbar Styling */
+    .navbar {
+      background: #fdf6ec; /* Light Cream */
+      padding: 15px 40px;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* Company Name Styling */
+    .company-name {
+        font-family: 'Great Vibes', cursive;
+        font-size: 2.2rem;
+        font-weight: bold;
+        letter-spacing: 2px;
+        background: linear-gradient(90deg, #d4af37, #ffd700, #fff6b7, #ffd700, #d4af37);
+        background-size: 300%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shine 4s linear infinite;
+        text-shadow: 2px 2px 6px rgba(255, 215, 0, 0.6);
+    }
+
+    @keyframes shine {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Right Side Text */
+    .navbar-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-right: 20px;
+      color: #333;
+    }
+
+    /* Social Icons */
+    .navbar-icons a {
+      color: #000000;
+      font-size: 1.3rem;
+      margin-left: 20px;
+      transition: color 0.3s;
+    }
+
+    .navbar-icons a:hover {
+      color: #ffd700;
+    }
+        
+
+    /* Footer */
+* Animated Footer Social Icons */
+.footer .social-section a {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  transform-style: preserve-3d;
+}
+.footer {
+  background-color: #1c2331;
+  color: #fff;
+  padding-top: 40px;
+}
+
+.footer .social-section {
+  background-color: #6351ce;
+  text-align: center;
+  padding: 20px;
+}
+
+.footer .social-section span {
+  margin-right: 15px;
+  font-weight: 500;
+}
+
+.footer .social-section a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.footer .social-section a:hover {
+  color: #ffd700;
+}
+
+.footer-column h6 {
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.footer-column h6::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: #6351ce;
+  margin-top: 6px;
+}
+
+.footer-column p,
+.footer-column a {
+  color: #ccc;
+  font-size: 14px;
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+.footer-column a:hover {
+  color: #ffd700;
+}
+
+.footer-column i {
+  margin-right: 10px;
+  color: #ffd700;
+}
+
+/* header */
+  body {
+      margin: 0;
+      padding: 20px;
+      background: #fff;
+    }
+
+    .header {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      color: #000;
+    }
+
+    .header-top {
+      font-size: 20px;
+      color: #aaa;
+      letter-spacing: 1px;
+    }
+
+    .header-main {
+      font-size: 34px;
+      font-weight: 800;
+      color: #000;
+    }
+
+    .gold-text {
+      font-family: 'Great Vibes', cursive;
+      font-size: 42px;
+      font-weight: bold;
+      background: linear-gradient(45deg, #c9a636, #f9e27d, #b8860b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+      margin: 0 5px;
+    }
+
+    .author {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #444;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .author b {
+      font-weight: 700;
+    }
+
+    .section-flowers {
+    background: url("assets/images/blog1\ back.jpg.png") no-repeat bottom center;
+    background-size: contain;
+    min-height: 80vh; /* Makes sure section has height */
+  }
+
+    </style>
+</head>
+<body>
+
+
+        
+      <!-- Navbar -->
+  <nav class="navbar d-flex justify-content-between align-items-center">
+    <!-- Left: Logo + Company Name -->
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="assets/images/logo.jpg" alt="Sristar Gold Logo" width="80" class="me-3">
+      <span class="company-name">Sristar Gold Company</span>
+    </a>
+
+    <!-- Right: Text + Social Icons -->
+    <div class="d-flex align-items-center">
+      <span class="navbar-text">Follow Us:</span>
+      <div class="navbar-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </nav>
+
+
+    </div>
+</nav>
+
+
+
+
+<!-- Custom CSS for Golden Shining Text -->
+<style>
+.company-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700, #fff176);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite linear;
+}
+
+/* Shimmer effect */
+@keyframes shine {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+</style>
+
+<!-- Content Section 1: Careers and Job Opportunities -->
+<div class="container-fluid mt-5 mb-5">
+  
+  <div class="header">
+    <div class="header-top" style="font-size: 35px;">KNOW YOUR GOLD</div>
+    <div class="header-main">
+      Factors Shaping the  
+      <span class="gold-text">Value</span>
+      <span class="gold-text">Of</span>
+      <span class="gold-text">Gold</span>
+    </div>
+    <div class="author">by <b>Dhruv Taneja</b></div>
+  </div>
+    </div>
+  </div>
+    
+    <!-- Content Section 1: Careers and Job Opportunities -->
+    <div class="container-fluid mt-5 mb-5">
+        <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center p-5">
+                <div class="careers-section">
+                     <p style="font-size: 25px;">
+           Have you ever been curious about the factors that derermine the value of gold? For centuries, this precious metal has been a symbol of wealth and a reliable safeguard against economic uncertainty. Today, gold continues to captivate investors, jewelers, and industry leaders alike. To better understand what drives the value of gold in the modern era, we spoke with Srikanth V, an expert in the precious metals market and also the Founder and Director of Sristar Gold and Sristar Sona Chandi Limited
+        </p>
+                </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center">
+                <div class="image-container w-100">
+                    <img src="assets/images/blog1.jpg" alt="Decorative 'Hello' image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+
+   <!-- Content Section 2: Sneak Peek -->
+
+  <div class="row w-100 justify-content-center">
+    <!-- Centered Text Only -->
+    <div class="col-lg-8 text-center p-5 culture-text">
+      <!-- Main Header -->
+      <h2 class="culture-section" style="font-size: 3rem; font-weight: 700; margin-bottom: 25px;">
+        The Shimmering Appeal of Supply and Demand
+      </h2>
+      <!-- Sub Header -->
+      
+      <!-- Paragraph -->
+      <p style="font-size: 25px; line-height: 1.8;">
+        "Gold's journey from deep within the earth to sparkling in a high-end jewelry store or a bank's vault is quite the process," explains Srikanth V. "The annual production of gold from mining operations directly impacts its supply. Any disruptions in mining-whether due to geopolitical tensions, labor strikes, or natural disasters can create ripples in the market, driving prices upward."
+      </p>
+      <p style="font-size: 25px; line-height: 1.8;">
+       On the demand side, gold serves both as a luxurious adornment and a critical industrial component. "In countries like India and China, gold jewelry is not only a status symbol but also a cultural cornerstone, fueling consistent demand," Srikanth adds. "Meanwhile, in the tech industry, gold's excellent conductivity makes it indispensable in electronics manufacturing."
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Content Section 3: Sneak Peek -->
+<div class="container-fluid mt-5 mb-5">
+  <div class="row align-items-start">
+    
+    <!-- Left: Header + Text -->
+    <div class="col-lg-6 d-flex flex-column p-5 culture-text">
+      <!-- Header aligned with image top -->
+      <h2 class="culture-section" style="font-size: 4rem; font-weight: 700; text-align: left; margin-bottom: 25px;">
+        Economic Indicators:
+      </h2>
+       <h2 class="culture-section" style="font-size: 2rem; font-weight: 700; text-align: left; margin-bottom: 25px;">
+        Gold's Barometer
+      </h2>
+      <p style="font-size: 25px; line-height: 1.8; margin-top: 10px;">
+       Gold prices are closely tied to various economic indicators. "Inflation is a key factor," says Srikanth. "As inflation erodes the purchasing power of fiat currencies, investors often flock to gold as a hedge, driving up its price. Similarly, interest rates play a pivotal role. When interest rates are low, the opportunity cost of holding non-yielding assets like gold diminishes, making gold a more attractive investment."
+      </p>
+    </div>
+
+    <!-- Right: Image -->
+    <div class="col-lg-6 d-flex align-items-start">
+      <div class="image-container w-100">
+        <img src="assets/images/yellow gold.jpg" alt="Yellow Gold Image" class="img-fluid rounded shadow">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+    <!-- Content Section 4: Sneak Peek -->
+<div class="container-fluid mt-5 mb-5">
+  <div class="row align-items-start">
+    <!-- Left: Image -->
+    <div class="col-lg-6 d-flex align-items-start">
+      <div class="image-container w-100">
+        <img src="assets/images/yellow gold.jpg" alt="Yellow Gold Image" class="img-fluid rounded shadow">
+      </div>
+    </div>
+
+    <!-- Right: Header + Text -->
+    <div class="col-lg-6 d-flex flex-column p-5 culture-text">
+      <!-- Header aligned with image top -->
+      <h2 class="culture-section" style="font-size: 4rem; font-weight: 700; text-align: left; margin-bottom: 25px;">
+        Geopolitical Stability:
+      </h2>
+       <h2 class="culture-section" style="font-size: 2rem; font-weight: 700; text-align: left; margin-bottom: 25px;">
+       The Safe Haven Factor
+      </h2>
+      <p style="font-size: 25px; line-height: 1.8; margin-top: 10px;">
+       "In times of political unrest or global crises, gold's reputation as a safe haven asset really shines," Srikanth explains. "Investors seek refuge in gold during periods of uncertainty, whether it's due to conflicts, economic sanctions, or even global pandemics. This rush to security can cause dramatic surges in gold prices, highlighting its role as a stabilizing force in tumultuous times."
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Content Section 3: Sneak Peek -->
+<div class="container-fluid mt-5 mb-5">
+  <div class="row align-items-start">
+    
+    <!-- Left: Header + Text -->
+    <div class="col-lg-6 d-flex flex-column p-5 culture-text">
+      <!-- Header aligned with image top -->
+      <h2 class="culture-section" style="font-size: 4rem; font-weight: 700; text-align: left; margin-bottom: 25px;">
+        Market Speculation and Central
+      </h2>
+       <h2 class="culture-section" style="font-size: 2rem; font-weight: 700; text-align: left; margin-bottom: 25px;">
+        Bank Policies
+      </h2>
+      <p style="font-size: 25px; line-height: 1.8; margin-top: 10px;">
+        Marker speculation can have a significant impact on gold prices. "Large-scale buying or selling by institutional investors, hedge funds, and even central banks can lead to significant price fluctuations," Srikanth states. "Central banks, in particular, wield considerable influence. Their policies regarding gold reserves can either stabilize or destabilize markets. For instance, if major central banks decide to bolster their gold reserves, it signals a lack of confidence in other financial instruments, leading to a rise in gold prices."
+      </p>
+    </div>
+
+    <!-- Right: Image -->
+    <div class="col-lg-6 d-flex align-items-start">
+      <div class="image-container w-100">
+        <img src="assets/images/yellow gold.jpg" alt="Yellow Gold Image" class="img-fluid rounded shadow">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Content Section 4: Sneak Peek -->
+<div class="container-fluid mt-5 mb-5">
+  <div class="row align-items-start">
+    <!-- Left: Image -->
+    <div class="col-lg-6 d-flex align-items-start">
+      <div class="image-container w-100">
+        <img src="assets/images/yellow gold.jpg" alt="Yellow Gold Image" class="img-fluid rounded shadow">
+      </div>
+    </div>
+
+    <!-- Right: Header + Text -->
+    <div class="col-lg-6 d-flex flex-column p-5 culture-text">
+      <!-- Header aligned with image top -->
+      <h2 class="culture-section" style="font-size: 4rem; font-weight: 700; text-align: left; margin-bottom: 25px;">
+        Technological Advances and 
+      </h2>
+       <h2 class="culture-section" style="font-size: 2rem; font-weight: 700; text-align: left; margin-bottom: 25px;">
+      Production Costs
+      </h2>
+      <p style="font-size: 25px; line-height: 1.8; margin-top: 10px;">Innovation in mining technology can also impact gold's value. "Enhanced extraction techniques can increase supply, potentially lowering prices," says Srikanth. "Conversely, rising production costs due to factors like increased labor costs or stricter environmental regulations-can constrain supply and push prices higher."</p>
+       
+    </div>
+  </div>
+</div>
+
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jewellery Chat Box</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .chat-box {
+      background: #fffdf8;
+      border-radius: 25px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+      padding: 80px 100px;   /* reduced top padding so text comes closer */
+      width: 80%;
+      max-width: 900px;
+      margin: 50px auto;     /* less gap from top */
+      position: relative;
+      animation: floatBox 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatBox {
+      from { transform: translateY(0px); }
+      to { transform: translateY(-8px); }
+    }
+
+    .chat-box h3 {
+      text-align: center;
+      font-weight: bold;
+      color: #6a1b9a;
+      margin-bottom: 25px; /* tighter spacing */
+      font-size: 2rem;
+    }
+
+    /* Bigger input boxes */
+    .form-control {
+      border-radius: 20px;
+      border: 2px solid #d1c4e9;
+      transition: 0.3s;
+      height: 55px;            /* increase height */
+      font-size: 1.1rem;       /* increase text size */
+      padding: 15px 20px;      /* more padding inside */
+    }
+    textarea.form-control {
+      height: 120px;           /* bigger comment box */
+      resize: none;
+    }
+    .form-control:focus {
+      border-color: #ab47bc;
+      box-shadow: 0 0 10px #f48fb1;
+    }
+
+    .btn-submit {
+      background: linear-gradient(45deg, #d4af37, #ffd700);
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      padding: 14px 30px;
+      font-size: 1.1rem;
+      transition: 0.4s;
+    }
+    .btn-submit:hover {
+      background: linear-gradient(45deg, #ffd700, #d4af37);
+      transform: scale(1.05);
+      box-shadow: 0 0 15px gold;
+    }
+
+    /* Floating emojis (optional) */
+    .emoji {
+      position: absolute;
+      font-size: 2rem;
+      animation: floatEmoji 6s linear infinite;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+    @keyframes floatEmoji {
+      0% { transform: translateY(0); opacity: 0.8; }
+      50% { transform: translateY(-50px); opacity: 1; }
+      100% { transform: translateY(0); opacity: 0.8; }
+    }
+
+    /* Backdrop + Thank You popup */
+    #backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 1040;
+    }
+    .thank-you-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow: 0px 8px 25px rgba(0,0,0,0.25);
+      z-index: 1050;
+      min-width: 300px;
+      max-width: 90vw;
+      animation: popUp 0.35s ease forwards;
+    }
+    @keyframes popUp {
+      from { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
+      to   { transform: translate(-50%, -50%) scale(1);   opacity: 1; }
+    }
+    .thank-you-popup h4 {
+      color: #6a1b9a;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chat-box">
+    <h3>💬 Chat with Us 💎</h3>
+    <form id="chatForm">
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="👤 Your Name" required>
+      </div>
+      <div class="mb-3">
+        <input type="email" class="form-control" placeholder="📧 Your Email" required>
+      </div>
+      <div class="mb-3">
+        <input type="tel" class="form-control" placeholder="📞 Phone Number" required>
+      </div>
+      <div class="mb-3">
+        <textarea class="form-control" rows="3" placeholder="💡 Drop your Comment..." required></textarea>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn-submit">✨ Send ✨</button>
+      </div>
+    </form>
+
+    <!-- Floating emojis -->
+    <div class="emoji" style="top:20px; left:-40px;">💍</div>
+    <div class="emoji" style="bottom:20px; right:-40px;">😂</div>
+    <div class="emoji" style="top:50%; right:-30px;">👑</div>
+    <div class="emoji" style="bottom:50%; left:-30px;">💎</div>
+  </div>
+
+  <!-- Backdrop + Thank You Popup -->
+  <div id="backdrop" aria-hidden="true"></div>
+  <div class="thank-you-popup" id="thankPopup" role="dialog" aria-modal="true" aria-labelledby="tyTitle">
+    <h4 id="tyTitle">🎉 Thank You! 🎉</h4>
+    <p>Your response has been submitted successfully 💰💎✨</p>
+    <button class="btn btn-warning" id="okBtn">OK ✨</button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer p-4">
+    <div class="social-section">
+      <div class="d-flex gap-3 flex-wrap" style="min-width: 140px;"></div>
+      <span>Get connected with us on social networks:</span>
+      <a href="https://www.facebook.com/sristargold/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://in.linkedin.com/company/sristargold" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.instagram.com/sristargold" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/embed/pDc-zHBSuNA" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <div class="container py-5">
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-column">
+            <h6>Company Name</h6>
+            <p>SRISTAR GOLD COMPANY</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-column">
+            <h6>Services</h6>
+            <p><a href="#">Gold Exchange</a></p>
+            <p><a href="#">Sell Gold</a></p>
+            <p><a href="#">Rent Gold</a></p>
+            <p><a href="#">Pledged Gold</a></p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-column">
+            <h6>Links</h6>
+            <p><a href="index.html">Home</a></p>
+            <p><a href="about.html">About</a></p>
+            <p><a href="services.html">Services</a></p>
+            <p><a href="branches.html">Branches</a></p>
+            <p><a href="contact.html">Contact</a></p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-column">
+            <h6>Contact</h6>
+            <p><i class="fas fa-home"></i>280/1, Anniamma Arcade, 2nd Floor,<br> Sampige Road, 18th Cross Rd, signal,<br> Malleshwaram, Bengaluru.</p>
+            <p><i class="fas fa-envelope"></i> sristargoldcompany@gmail.com</p>
+            <p><i class="fas fa-phone"></i>+91 63 66 333 444</p>
+            <p><i class="fas fa-print"></i>+91 63 66 333 444</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    const chatForm = document.getElementById("chatForm");
+    const thankPopup = document.getElementById("thankPopup");
+    const backdrop = document.getElementById("backdrop");
+    const okBtn = document.getElementById("okBtn");
+
+    function openPopup() {
+      backdrop.style.display = "block";
+      thankPopup.style.display = "block";
+      // optional: focus the OK button for accessibility
+      setTimeout(() => okBtn.focus(), 0);
+    }
+
+    function closePopup() {
+      thankPopup.style.display = "none";
+      backdrop.style.display = "none";
+    }
+
+    chatForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      openPopup();
+      // Auto-close after 3 seconds
+      setTimeout(() => {
+        closePopup();
+        chatForm.reset();
+      }, 3000);
+    });
+
+    okBtn.addEventListener("click", closePopup);
+    backdrop.addEventListener("click", closePopup);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closePopup();
+    });
+  </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
+</body>
+</html>
